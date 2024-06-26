@@ -36,7 +36,7 @@ The Document Storage Service is built using the Model-View-Controller (MVC) arch
 
 - Clone the repository:
 ```bash
-git clone https://github.com/sammykingx/Bliss-Document_Storage_Service.git
+git clone https://github.com/sammykingx/bliss-document_storage_service.git
 ```
 - Change directory `cd` to document-storage-service or open folder with code
 

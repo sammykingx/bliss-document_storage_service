@@ -1,8 +1,8 @@
 from app.extensions import db
-from sqlalchemy import Table
+from sqlalchemy import Table, Row
 
 
-def fetch_records(table: Table, **kwargs) -> tuple:
+def fetch_records(table: Table, **kwargs) -> Row:
     """Queries database table to get records
     :table:
         The database table to query
@@ -11,16 +11,15 @@ def fetch_records(table: Table, **kwargs) -> tuple:
         Keyword arguments to filter table records
     """
     if kwargs:
-        records = db.session.execute(
-            db.select(table)
-            .filter_by(**kwargs)
-        ).first()
+        records = table.query.filter_by(**kwargs).first()
         
     else:
-        records = db.session.execute(db.select(table)).all()
-        
+        records = table.query.all()
+    
+    return records
+   
 
-def save_record(table: Table, **data) -> Table:
+def save_record(table: Table, **data) -> Row:
     """saves data to db and returns the record"""
 
     record = table(**data)

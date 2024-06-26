@@ -38,20 +38,20 @@ def create_user_instances(users: dict[str]) -> list[Users]:
 
 def run() -> None:
     if int(db.session.query(Users).count()) > 0:
-        print(">>> DB Not Empty")
+        # print(">>> DB Not Empty")
         return None
      
-    print(">>> Generating seed data") 
+    # print(">>> Generating seed data") 
 
     data = generate_seed_data()
 
-    print(">>> saving seed data to file")
+    # print(">>> saving seed data to file")
     with open("seed_user.json", "w") as file:
         json.dump(data, file, indent=4)
         
     cleaned_data = create_user_instances(data)
 
-    print(">>> Seeding database with generated data")
+    # print(">>> Seeding database with generated data")
     db.session.add_all(cleaned_data)
     db.session.commit()
-    print(">>> DB seediing complete")
+    # print(">>> DB seediing complete")
