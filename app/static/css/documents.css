@@ -1,0 +1,174 @@
+
+
+/* document search */
+
+
+main {
+    width: 100%;
+    font-family: verdana;
+    margin-top: 6%;
+    padding-left: 5%;
+    padding-top: 10%;
+    /* background-image: url("image/blisspanel.png"); */
+}
+
+main h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+form#searchForm {
+    margin-bottom: 1.5rem;
+    display: flex;
+    padding-left: 1rem;
+    margin-right: 1rem;
+    width: 60%;
+}
+
+form#searchForm input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1;
+    padding-left: 1rem;
+}
+
+form#searchForm button {
+    background-color: black;
+    color: lemonchiffon;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-left: 1rem;
+}
+
+form#searchForm button:hover {
+    background-color: gray;
+}
+
+.documents-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.documents-list th, .documents-list td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.documents-list th {
+    background-color: #478778;
+    color: white;
+}
+
+.documents-list tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    background-color: #588157;
+    color: lemonchiffon;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-right: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #96DED1;
+}
+
+.btn-danger {
+    background-color: red;
+}
+
+.btn-danger:hover {
+    background-color: darkred;
+}
+
+.categoryFilter{
+    padding: 0.5rem;
+    font-family: verdana;
+    font-size: 9em;
+    font-weight: bolder;
+}
+
+
+
+/* Header Styling
+header {
+    background-color: #588157;
+    color: lemonchiffon;
+    padding-top: 1rem ;
+    padding-bottom: 0.5rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 54px;
+}
+
+img{
+    width: 180px;
+    height: 40px;
+    margin-top: 0;
+    padding-left: 5px;
+    margin-bottom: 0;
+    position: absolute;
+    margin-left: 5px;
+}
+*/
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0rem;
+    padding:0rem;
+    font-family: verdana;
+    font-weight: lighter; 
+
+}
+
+header nav ul li {
+    margin-right: 2rem;
+
+}
+
+header nav ul li a {
+    color: lemonchiffon;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+
+}
+
+header nav ul li a:hover {
+    color: gray;
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #588157;
+    color: lemonchiffon;
+    text-align: center;
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+footer p {
+    margin: 0;
+    font-family: verdana;
+}
