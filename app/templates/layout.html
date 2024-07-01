@@ -36,11 +36,11 @@
         <aside class="sidebar">
             <img src="static/images/logo.png">
             <ul>
-                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href={{ url_for("user.user_dashboard") }}><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="upload.html"><i class="fas fa-upload"></i> Upload</a></li>
                 <li><a href="my-documents.html"><i class="fas fa-folder"></i> My Documents</a></li>
                 <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
-                <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href={{ url_for("auth.user_logout") }}><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </aside>
         <main class="main-content">
@@ -57,7 +57,7 @@
                 {% if messages %}
                     {% for message in messages %}
                         <div class="alert alert-primary" role="alert" style="width:500px;">
-                            {{ error_message }}
+                            {{ message }}
                         </div>
                     {% endfor %}
                 {% endif %}
@@ -67,7 +67,7 @@
             {% block body %}
             <h1>Dashboard</h1>
             <div class="card">
-                <h2>Welcome, [Username]</h2>
+                <h2>Welcome, {{ user.name }}</h2>
                 <p>Here you can manage your documents, upload new files, and much more.</p>
                 <a href="my-documents.html" class="btn">Get Started</a>
             </div>
