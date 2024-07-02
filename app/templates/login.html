@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLL Cloud Platform - User Checkpoint</title>
-    <link rel="stylesheet" href="static/css/login.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/login.css") }}> <!-- Link to your CSS file -->
   </head>
   <body>
     <div class="login-container">
-      <img src="static/images/logo.png">
+      <img src={{ url_for("static", filename="images/logo.png") }}>
       <form id="loginForm" action="#" method="POST">
         <h2>welcome!!</h2>
         <div class="form-group">

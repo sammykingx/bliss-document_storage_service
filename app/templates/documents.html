@@ -3,7 +3,7 @@
 {% block title %}User Documets{% endblock %}
 
 {% block css_styles %}
-    <link rel="stylesheet" href="static/css/documents.css">
+    <link rel="stylesheet" href={{ url_for("static", filename="css/documents.css") }}>
 {% endblock %}
 
 {% block body %}

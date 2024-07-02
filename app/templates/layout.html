@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="https://fontawesome.com/icons/gear?f=classic&s=light">
         <link rel="stylesheet" href="https://fontawesome.com/icons/bell?f=classic&s=light">
-        <link rel="stylesheet" href="static/css/layout.css">
+        <link rel="stylesheet" href={{ url_for("static", filename="css/layout.css") }}>
         {% block css_styles %}
         
         {% endblock %}
@@ -34,7 +34,7 @@
     <!-- Sidebar code -->
     <div class="dashboard-container">
         <aside class="sidebar">
-            <img src="static/images/logo.png">
+            <img src={{ url_for("static", filename="images/logo.png") }}>
             <ul>
                 <li><a href={{ url_for("user.user_dashboard") }}><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="upload.html"><i class="fas fa-upload"></i> Upload</a></li>

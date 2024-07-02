@@ -1,7 +1,8 @@
 import os
+from dotenv import load_dotenv
 #from sqlalchemy import QueuePool
 
-
+load_dotenv()
 class DevelopmentConfig:
 
     SECRET_KEY = os.getenv("APP_SECRET_KEY")
@@ -13,10 +14,9 @@ class DevelopmentConfig:
     #    "pool_recycle": 3600,
     #}
 
-    MAIL_SERVER = "smtp.titan.email" or os.getenv("SMTP_HOST")
+    MAIL_SERVER = os.getenv("SMTP_HOST")
     MAIL_PORT = int(os.getenv("SMTP_PORT"))
-    # MAIL_USE_TLS = bool(os.getenv("USE_TLS"))
     MAIL_USE_SSL = bool(os.getenv("USE_SSL"))
-    MAIL_USERNAME = "test@zenithtour.online" or os.getenv("SMTP_MAIL")
-    MAIL_PASSWORD = "qw-$8OQbS1 &<D-" or os.getenv("SMTP_PWD")
-    MAIL_DEFAULT_SENDER = "test@zenithtour.online" or os.getenv("SMTP_MAIL")
+    MAIL_USERNAME = os.getenv("SMTP_MAIL")
+    MAIL_PASSWORD = os.getenv("SMTP_PWD")
+    MAIL_DEFAULT_SENDER = os.getenv("SMTP_MAIL")
