@@ -60,6 +60,7 @@
 .sidebar img{
     position: relative;
     padding-bottom: 15px;
+    margin-right: 20px;
 }
 /* Main Content Styling */
 .main-content {
@@ -196,8 +197,8 @@ header {
 */
 
 img{
-    width: 180px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     margin-top: 0;
     padding-left: 5px;
     margin-bottom: 0;
@@ -235,14 +236,14 @@ header nav ul li a:hover {
 
 /* Footer Styling */
 footer {
-    background-color: #588157;
+    background-color: #478778;
     color: lemonchiffon;
     text-align: center;
     padding: 0.5rem;
     position: fixed;
     bottom: 0;
-    left: 232px;
-    width: calc(100% - 232px);
+    left: 200px;
+    width: calc(100% - 200px);
     z-index: 1000;
     font-family: lato;
 

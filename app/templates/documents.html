@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>My Documents</h1>
+    <h2>My Documents</h2>
     <form id="searchForm">
         <input type="text" id="searchInput" placeholder="Search documents...">
         <select id="categoryFilter">
@@ -58,4 +58,7 @@
         </table>
     </div>
 {% endblock %}
-<script src="scripts.js"></script>
+
+{% block js_scripts %}
+    <script src={{ url_for("static", filename="js/scripts.js") }}></script>
+{% endblock %}
