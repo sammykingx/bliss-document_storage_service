@@ -37,9 +37,9 @@
             <img src={{ url_for("static", filename="images/logo.png") }}>
             <ul>
                 <li><a href={{ url_for("user.user_dashboard") }}><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="upload.html"><i class="fas fa-upload"></i> Upload</a></li>
-                <li><a href="my-documents.html"><i class="fas fa-folder"></i> My Documents</a></li>
-                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href={{ url_for("documents.upload_doc") }}><i class="fas fa-upload"></i> Upload</a></li>
+                <li><a href={{ url_for("documents.fetch_all_docs") }}><i class="fas fa-folder"></i> My Documents</a></li>
+                <li><a href={{ url_for("user.user_profile") }}><i class="fas fa-user"></i> Profile</a></li>
                 <li><a href={{ url_for("auth.user_logout") }}><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </aside>
