@@ -42,7 +42,7 @@ def user_checkpoint():
             return render_template("login.html")
 
         login_user(user_record)
-        flash("succesfully logged in, welcome on board")
+        flash("succesfully logged in, welcome on board", category="info")
         current_app.logger.info("User logged in")
         
         #user_default_page = helpers.fetch_dashboard_url(user_record.role)

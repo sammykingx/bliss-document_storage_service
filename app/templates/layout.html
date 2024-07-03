@@ -53,11 +53,12 @@
             </div>
             
             <!-- alert section-->
-            {% with messages = get_flashed_messages() %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-primary" role="alert" style="width:500px;">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="width:500px;">
                             {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     {% endfor %}
                 {% endif %}
@@ -74,9 +75,12 @@
             <p>&copy; 2024 Cloud Document Management</p>
         </footer>
     {% endblock footer %}
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fe55fb328f.js" crossorigin="anonymous"></script>
+    
     {% block js_scripts %}
-        <script src="https://kit.fontawesome.com/fe55fb328f.js" crossorigin="anonymous"></script>
+    
     {% endblock js_scripts %}
 </body>
 </html>
