@@ -1,7 +1,8 @@
 /* document search */
 
 form#searchForm {
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
+    margin-top: 3.5rem;
     display: flex;
     padding-left: 1rem;
     margin-right: 1rem;
@@ -17,7 +18,7 @@ form#searchForm input {
 }
 
 form#searchForm button {
-    background-color: black;
+    background-color: #478778;
     color: lemonchiffon;
     padding: 0.5rem 1rem;
     border: none;
@@ -30,7 +31,7 @@ form#searchForm button {
 }
 
 form#searchForm button:hover {
-    background-color: gray;
+    background-color: #96DED1;
 }
 
 .documents-list table {

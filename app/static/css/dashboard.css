@@ -1,0 +1,90 @@
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+    padding: 1.5rem;
+    margin-bottom: 5.5rem;
+    margin-top: 3rem;
+    height: 12rem;
+    background-image:
+   linear-gradient(to left, rgba(245, 246, 252, 0.12), #478778),
+   url('../images/cloud.png');
+   background-repeat: no-repeat;
+   background-size: contain ;
+   background-position: right;
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #333;
+
+}
+
+.card .btn {
+    background-color: white;
+    color: black;
+    padding: 0.5rem 2.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 0;
+    float: left;
+    width: 12rem;
+}
+
+.card .btn:hover {
+    background-color: #478778;
+}
+
+/* Statistics Cards Styling */
+.stats-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 10rem;
+}
+
+.stats-card {
+    background-color: #96DED1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(30.333% - 1rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s;
+}
+
+.stats-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.stats-card p {
+    font-size: 1rem;
+}
+
+.stats-card:hover {
+    background-color: #478778;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .stats-card {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-card {
+        width: 100%;
+    }
+}

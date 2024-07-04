@@ -4,9 +4,16 @@
 
 {% block css_styles %}
     <!-- your css styles per page -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/#") }}>
 {% endblock %}
 
 {% block body %}
     <!-- body content -->
+
 {% endblock %}
 <!-- your js script tag-->
+ 
+ {% block js_scripts %}
+    <!-- your  js files per page-->
+    <script src={{ url_for("static", filename="js/#") }}></script>
+ {% endblock %}

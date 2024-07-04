@@ -4,13 +4,15 @@
 
 {% block css_styles %}
     <!-- your css styles per page -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/dashboard.css") }}>
 {% endblock %}
 
 {% block body %}
     <!-- body content -->
     <h2>Dashboard</h2>
+    <h5>Welcome, {{ user.name }}.</h5>
     <div class="card">
-        <h2>Welcome, {{ user.name }}</h2>
+        
         <p>Here you can manage your documents, upload new files, and much more.</p>
         <a href="my-documents.html" class="btn">Get Started</a>
     </div>
