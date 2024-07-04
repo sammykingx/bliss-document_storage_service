@@ -1,6 +1,6 @@
-body {
+.body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #128185;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,16 +9,15 @@ body {
 }
 
 .login-container {
-  background-color: #128185;
-  padding:40px;
-  border-radius:30px;
+  background-image:radial-gradient(white,#478778);
+  margin-bottom:-120px;
+  padding-top:-40px;
+  padding-left:40px;
+  padding-right:40px ;
+  border-radius:15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 350px;
   color: white;
-  animation-name: example;
-  animation-duration: 18s;
-  animation-delay: -10s;
-  animation-iteration-count: infinite;
   font-family:Lato;
 }
 
@@ -27,11 +26,28 @@ form {
   flex-direction: column;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  h2{
+    position: relative;
+    top:-39px;
+    color:black;
+    text-align: center;
 
+  }
+  h6{
+    position: relative;
+    top:-25px;
+    color:black;
+    text-align: center;
+    
+  }
+  .h3,h6,.forget, button{
+    font-family:lato;
+  }
+
+.log{
+position: relative;
+top:-70px;
+}
 .form-group {
   margin-bottom: 15px;
   font-family:Lato;
@@ -40,19 +56,20 @@ h2 {
 label {
   font-weight: bold;
 
+
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
   padding: 4px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: 1px solid #272626;
+  border-radius: 8px;
   width: 100%;
   outline:none;
 }
 
-.form-group button{
-  background-color:rgb(59, 238, 59);
+.log button{
+  background-color:rgb(18, 124, 18);
   color: black;
   border: none;
   padding: 5px;
@@ -60,34 +77,31 @@ input[type="password"] {
   border-radius:10px;
   padding-left:90px;
   padding-right:90px;
-  margin-left:21px;
+  margin-left:-40px;
   font-family: Lato;
 }
 
 button:hover {
-  background-color: #c7c5c5;
+  background-color: #67d667;
 }
 img{
-  
-  width:200px;
+  position: relative;
+  top:-100px;
+  left:-25px;
+  width:250px;
   padding-left:59px;
   padding-bottom:30px;
+  padding-top:80px;
   display: flex;
 }
 
-.forget{
-  color:white;
-  margin-top:40px;
- margin-left:70px;
- font-family:Lato;
-}
 a{
-  text-decoration: none;
+      
+      margin-top:15px;
+      margin-left:67px;
+      font-family:Lato;
 }
-@keyframes example {
-  0%   {background-color:#2e9ca0}
-  25%  {background-color:#0d3b3d}
-  50%  {background-color:#339497}
-  75%  {background-color:#144042}
-  100% {background-color:#17565c}
-  }
+.log a{
+  text-decoration:none;
+  color:black;
+}
