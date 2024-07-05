@@ -7,7 +7,9 @@ from . import auth_bp
 def user_logout():
     
     logout_user()
+    """
     flash(
         "Successfully logged out, hope to see you soon",
         category="info")
+    """
     return redirect(url_for("auth.user_checkpoint"))
