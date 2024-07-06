@@ -1,5 +1,6 @@
 from flask import Flask, url_for
 from itsdangerous import URLSafeTimedSerializer
+from itsdangerous.exc import SignatureExpired
 from dotenv import load_dotenv
 import os
 
@@ -33,3 +34,27 @@ def fetch_dashboard_url(user_role) -> str:
         return url_for("admin.render_dashboard")
 
     return url_for("index")
+
+
+def is_email_token_present(token: str | None) -> bool:
+    """checks if email token is present"""
+
+    # if token is None, return False
+    if token is None:
+        return False
+
+    return True
+
+
+def get_token_data(token: str) -> dict[str, str]:
+    """returns the data in the token"""
+
+    try:
+        data = email_serializer.loads(token, max_age=300)
+        return {"valid": True, "data": data}
+
+    except SignatureExpired:
+        return {
+            "valid": False,
+            "message": "expired email token",
+        }

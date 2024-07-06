@@ -1,13 +1,13 @@
 from flask import (
     current_app,
     flash,
+    jsonify,
     redirect,
     render_template,
     request,
     session,
     url_for,
 )
-from itsdangerous.exc import SignatureExpired
 from werkzeug.security import generate_password_hash
 from app.database.users import Users
 from app.database import db_helpers
@@ -18,42 +18,36 @@ from . import auth_bp, helpers
 
 @auth_bp.route("/reset_password", methods=["GET", "POST"])
 def reset_password():
-    #if not token:
-    #    flash(
-    #        message="corrupt URL",
-    #        category="error"
-    #    )
-    #    current_app.logger.info("Bad Token")
-
-    #    return redirect(url_for("auth.user_checkpoint"))
-    
     if request.method == "POST":
-        new_pwd = request.form["new_pwd"]
-        conf_pwd = request.form["conf_pwd"]
-        if new_pwd != conf_pwd:
-            flash("passwords doesn't match, check and try again")
-            return redirect(url_for("auth.verify_user_email"))
+        form_data = request.form
+        if helpers.is_email_token_present(form_data["token"]):
+            return jsonify(
+                message="Invalid token, try again",
+                category="error",
+                redirect_url=url_for("auth.user_checkpoint"),
+            ), 400
 
-        try:
-            #user_email = helpers.email_serializer.loads(token, max_age=600)
-            user_email = "patricia65@example.net"
+        token_data = helpers.get_token_data(form_data["token"])
+        if not token_data["valid"]:
+            return jsonify(
+                message=token_data["message"],
+                category="error",
+            ), 400
             
-        except SignatureExpired as err:
-            flash(
-                message="expired email token",
-                category="error"
-            )
-            
-            return redirect(url_for("auth.user_checkpoint"))
+        user_record = db_helpers.fetch_records(Users, email=token_data["data"])
+        user_record.password = generate_password_hash(form_data["password"])
         
-        user_record = db_helpers.fetch_records(Users, email=user_email)
-        user_record.password = generate_password_hash(new_pwd)
         db.session.add(user_record)
         db.session.commit()
         db.session.refresh(user_record)
-        current_app.logger.info(f"User password changed: {new_pwd}")
-        return redirect(url_for("auth.user_checkpoint"))
-     
+    
+        current_app.logger.info(f"User password changed: {user_record.email}")
+        return jsonify(
+            message="Password reset successful",
+            category="success",
+            redirect_url=url_for("auth.user_checkpoint"),
+        )
+    
     return render_template("reset_password.html")
 
 
@@ -68,12 +62,10 @@ def verify_user_email():
         )
         
         if not user_record:
-            flash(
+            return jsonify(
                 message="Enter a registered email to get reset token",
-                category="info",
-            )
-            
-            return redirect(url_for("auth.user_checkpoint"))
+                category="warning",
+            ), 400
         
         token = helpers.email_serializer.dumps(user_email)
         reset_endpoint = "http://localhost:5000{}".format(url_for("auth.reset_password", token=token))
@@ -83,15 +75,16 @@ def verify_user_email():
             reset_url=reset_endpoint)
 
         current_app.logger.info(f">>> {reset_endpoint}")
+
         mail_client.send_mail(
             subject="BLL Password Reset",
             to_email=user_email,
             message=email_msg,
         )
-        flash(
+        
+        return jsonify(
             message="Kindly check your email to proceed",
             category="info",
-        )
-        
+        )       
 
     return render_template("request_password_token.html")

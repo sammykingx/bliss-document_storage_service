@@ -1,3 +1,5 @@
+import { AUTH_ENDPOINTS } from './endpoints.js';
+
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -14,7 +16,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     formData.append('email', email);
     formData.append('password', password);
 
-    fetch('/checkpoint', {
+    fetch(AUTH_ENDPOINTS.LOGIN, {
         method: 'POST',
         body: formData
     })

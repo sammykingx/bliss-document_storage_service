@@ -5,7 +5,7 @@
     top: 10%;
     right: 20px;
     padding: 10px 20px;
-    background-color: #4caf50; /* Green background */
+    background-color: #17df8c; /* Green background */
     color: rgb(253, 251, 251);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -15,4 +15,8 @@
 /* Notification for warning */
 #notification.warning {
     background-color: #ff9800; /* #FFBF17 Orange background */
+}
+/* notification for error */
+#notification.error {
+    background-color: #ff2b01; /* #FF2B01 Red background */
 }
