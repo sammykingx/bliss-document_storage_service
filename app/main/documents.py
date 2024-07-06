@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import current_app, Blueprint, request, render_template
 from flask_login import current_user, login_required
 
 
@@ -13,6 +13,13 @@ def fetch_all_docs():
 @bp.route("/upload_documents")
 @login_required
 def upload_doc():
+    if request.method == "POST":
+        '''
+        form_data = request.form
+        current_app.logger.info(f"form data: {form_data}")
+        '''
+        pass
+    
     return render_template("uploads.html")
 
 
