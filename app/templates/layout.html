@@ -18,58 +18,64 @@
         {% endblock %}
 </head>
 <body>
-    <header>
-        <!--
-        <img src="image/blisspanel.png">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        -->
-    </header>
-
     <!-- Sidebar code -->
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <img src={{ url_for("static", filename="images/logo.png") }}>
-            <ul>
-                <li><a href={{ url_for("user.user_dashboard") }}><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href={{ url_for("documents.upload_doc") }}><i class="fas fa-upload"></i> Upload</a></li>
-                <li><a href={{ url_for("documents.fetch_all_docs") }}><i class="fas fa-folder"></i> My Documents</a></li>
-                <li><a href={{ url_for("user.user_profile") }}><i class="fas fa-user"></i> Profile</a></li>
-                <li><a href={{ url_for("auth.user_logout") }}><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </aside>
-        <main class="main-content">
-            <div class="widget">
-                <!--<img src="image/avatar.png" alt="Avatar" class="avatar"> -->
+    <aside class="sidebar">
+        <img src={{ url_for("static", filename="images/logo.png") }}>
+        <ul>
+            <li><a href={{ url_for("user.user_dashboard") }}><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href={{ url_for("documents.upload_doc") }}><i class="fas fa-upload"></i> Upload</a></li>
+            <li><a href={{ url_for("documents.fetch_all_docs") }}><i class="fas fa-folder"></i> My Documents</a></li>
+            <li><a href={{ url_for("user.user_profile") }}><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href={{ url_for("test_route") }}><i class="fas fa-user"></i> Test Layout</a></li>
+            <li><a href={{ url_for("auth.user_logout") }}><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </aside>
 
-            <i class="fa-solid fa-gear"></i>
-            <i class="fa-regular fa-bell"></i>
-            
+    
+    <!-- page widget area -->
+    
+    <div class="widget">
+        <!--
+        <div class="container">
+            <Div class ="icon">
+            <img src={{ url_for("static", filename="images/avatar.png" ) }} alt="Icon" class="icon">
+            </Div>
+            <div class="text">
+                <h6>John Doe</h6>
+                <p>Accountant</p>
             </div>
-            
-            <!-- alert section-->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="width:500px;">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-
-            <!-- Dynamic body -->
-            {% block body %}
-
-            {% endblock %}
-        </main>
+        </div>      
+        -->
+          <!-- page widget area -->
+       
+        <div class="card-block ">
+          <i class="fa-solid fa-gear"></i>
+          <i class="fa-regular fa-bell"></i> 
+        </div>
+         
     </div>
+
+    alert section
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="width:500px;">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!--
+    <div class="dashboard-container">
+    <main class="main-content">
+        Dynamic body
+        {% block body %}
+
+        {% endblock %}
+    </main>
+    -->
     {% block footer %}
         <footer>
             <p>&copy; 2024 Cloud Document Management</p>
@@ -82,5 +88,6 @@
     {% block js_scripts %}
     
     {% endblock js_scripts %}
+    
 </body>
 </html>

@@ -35,7 +35,7 @@
     transition: background-color 0.3s;
     margin-top: 0;
     float: left;
-    width: 12rem;
+    width: 10rem;
 }
 
 .card .btn:hover {
@@ -76,6 +76,7 @@
     background-color: #478778;
     color: white;
 }
+/* responsive section*/
 
 @media (max-width: 768px) {
     .stats-card {
