@@ -9,9 +9,9 @@
 
 {% block body %}
   <!-- body content -->
-  <div class="form">
-    <form class="row g-3" id="uploadDocument" action="#" method="POST" enctype="multipart/form-data">
-      <h2>Upload Document</h2>
+    <div class="main-content">
+        <form class="row g-3" id="uploadDocument" action="#" method="POST" enctype="multipart/form-data">
+        <h2>Upload Document</h2>
       <div class="col-md-6">
         <label for="inputName" class="form-label">First Name</label>
         <input type="text" class="form-control" name="clientFirstName" placeholder="John" required>
@@ -75,6 +75,7 @@
       </div>
     </form>
   </div>
+
 {% endblock %}
 
 {% block js_scripts %}

@@ -1,6 +1,13 @@
 /* Dashboard Layout */
-body {
-    background-color: #cccfcc;
+.main-content {
+    background-color: #EAEDED;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 100px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    height: auto;
+    width: auto;
     
 }
 /*
@@ -111,6 +118,7 @@ body {
 }
 /* Main Content Styling */
 .widget {
+    z-index: 1000;
     position: fixed;
     background-color: #f4f4f4;
     padding: 0.5rem;
@@ -121,7 +129,7 @@ body {
     box-sizing: border-box;
     width: calc(100% - 200px);
     margin-left: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 

@@ -59,7 +59,7 @@ def upload_doc():
 
         #current_app.logger.info(f"form data: {form_data}")
     
-    return render_template("file_upload.html")
+    return render_template("uploads.html")
 
 
 @bp.route("/download_documents")

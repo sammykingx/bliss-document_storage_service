@@ -27,7 +27,6 @@
             <li><a href={{ url_for("documents.upload_doc") }}><i class="fas fa-upload"></i> Upload</a></li>
             <li><a href={{ url_for("documents.fetch_all_docs") }}><i class="fas fa-folder"></i> My Documents</a></li>
             <li><a href={{ url_for("user.user_profile") }}><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href={{ url_for("test_route") }}><i class="fas fa-user"></i> Test Layout</a></li>
             <li><a href={{ url_for("auth.user_logout") }}><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </aside>
@@ -69,12 +68,12 @@
     {% endwith %}
      -->
 
-    <main class="main-content">
+    <div class="main-content">
         <!-- Dynamic body --> 
         {% block body %}
 
         {% endblock %}
-    </main>
+    </div>
     <div id="notification"></div>
     {% block footer %}
         <footer>

@@ -7,60 +7,58 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Profile for {{ user.name }}</h2>
+<div class="main-content">
+  
+    
     <!-- the content-->
-    <div class="profile-card">
+    
+  <div class="container">
+    <div class="heading">
+      <h3>John Doe</h3>
+      <p>Full Stack Developer</p>
+    </div>
+    <div class="content">
+      <div class="info">
 
-        <div class="page-content page-container" id="page-content">
-       <div class="padding">
-        <div class="row container d-flex justify-content-center">
-        <div class="col-xl-6 col-md-12">
-                                                <div class="pcard user-card-full">
-                                                    <div class="row m-l-0 m-r-0">
-                                                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                                                            <div class="card-block text-center text-white">
-                                                                <div class="m-b-25">
-                                                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                                                </div>
-                                                                <h6 class="f-w-600">John Doe</h6>
-                                                                <p>Branch Manager</p>
-                                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="card-block">
-                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Email</p>
-                                                                        <h6 class="text-muted f-w-400">Ihamab@gmail.com</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Phone</p>
-                                                                        <h6 class="text-muted f-w-400">0709989898</h6>
-                                                                    </div>
-                                                                </div>
-                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Recent</p>
-                                                                        <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Most Viewed</p>
-                                                                        <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                             </div>
-                                                </div>
-                                            </div>
-       
-    </div>   
+        <div class="details">
+        <h2>Information</h2>
+       </div>
+         <hr>
+        <div class="mail">
+           <h3>E-mail</h3>
+          <p>JohnDoe@test.com</p>
+        </div>
+        
+
+        <div class="phone">
+           <h3>Phone</h3>
+          <p>070112200000</p>
+        </div>
+      <hr>
+        <div class="address">
+           <h3>Address</h3>
+          <p>20 Downing street, london.</p>
+        </div>
+      
+        <div class="last-login">
+           <h3>Last Seen</h3>
+          <p>2 hrs ago</p>
+        </div>
+        <hr>
+        <div class="recent">
+           <h3>Activity</h3>
+          <p>viewed 20 documents</p>
+        </div>
+        
+    </div>
+</div>
+<!-- the content-->
+<div class="outer-container">
+  <div class="inner-top"></div>
+  <div class="inner-bottom"></div>
+</div>
+</div>
+
+</div>
 {% endblock %}
-<!-- your js script tag-->
+<!--your js script tag-->
