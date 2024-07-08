@@ -55,8 +55,6 @@ top:-70px;
 
 label {
   font-weight: bold;
-
-
 }
 
 input[type="email"],
@@ -97,10 +95,12 @@ img{
 
 a{
    margin-top:15px;
-   margin-left:67px;
+   margin-left:70px;
    font-family:Lato;
 }
 .log a{
   text-decoration:none;
   color:black;
 }
+
+
