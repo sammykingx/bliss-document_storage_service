@@ -9,50 +9,50 @@
 {% block body %}
 <div class="main-content">
   
-    
+  <h2>My Profile</h2>
     <!-- the content-->
     
   <div class="container">
     <div class="heading">
-      <h3>John Doe</h3>
-      <p>Full Stack Developer</p>
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.role.capitalize() }}</p>
     </div>
     <div class="content">
       <div class="info">
 
         <div class="details">
-        <h2>Information</h2>
+        <h4>Information</h4>
        </div>
          <hr>
         <div class="mail">
-           <h3>E-mail</h3>
-          <p>JohnDoe@test.com</p>
+           <h5>E-mail</h5>
+          <p>{{ user.email }}</p>
         </div>
         
 
         <div class="phone">
-           <h3>Phone</h3>
+           <h5>Phone</h5>
           <p>070112200000</p>
         </div>
       <hr>
         <div class="address">
-           <h3>Address</h3>
+           <h5>Address</h5>
           <p>20 Downing street, london.</p>
         </div>
       
         <div class="last-login">
-           <h3>Last Seen</h3>
+           <h5>Last Seen</h5>
           <p>2 hrs ago</p>
         </div>
         <hr>
         <div class="recent">
-           <h3>Activity</h3>
+           <h5>Activity</h5>
           <p>viewed 20 documents</p>
         </div>
         
     </div>
 </div>
-<!-- the content-->
+<!-- the content
 <div class="outer-container">
   <div class="inner-top"></div>
   <div class="inner-bottom"></div>
@@ -60,5 +60,6 @@
 </div>
 
 </div>
+-->
 {% endblock %}
 <!--your js script tag-->

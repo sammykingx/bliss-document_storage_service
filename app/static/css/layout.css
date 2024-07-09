@@ -100,11 +100,7 @@
 .sidebar ul li a:hover {
     background-color: #B9E3C6;
     color: black;
-    -webkit-transform: rotate(-4deg);
-  -moz-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
-  -o-transform: rotate(-4deg);
-  transform: rotate(-4deg);
+   
 }
 
 .sidebar ul li a i {

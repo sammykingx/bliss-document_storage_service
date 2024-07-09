@@ -1,118 +1,46 @@
-.profile{
-	min-height: 30rem;
-	height: auto;
-	width: auto;
-	font-family: lato;
-	line-height: 40px;
-	margin: auto;
-	margin-top: 5rem;
-	margin-bottom: 2rem;
-    border-radius: 40px 40px 40px 40px;
-    background-color: white;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-
-}
-.heading{
-	text-align: center;
-}
+/*
 .procard{
-width: 100%;
-	text-align: center;
-    padding-top: 2rem;
-
-}
-.procard h1{
-	    font-size: 20px;
-		font-weight: bolder;
-
-}
-.procard p{
-	font-weight: bold;
-}
- 
- .procard img{
- 	width: 80px;
- 	height: 80px;
- 	border-radius: 50% 50%;
- 	align-content: center;
- 	margin-top: 2rem;
- }
- .info{
- 	padding: 2rem;
- }
- 
- .info h2{
- 	font-weight: bolder;
- 	color: black;
- 	font-size: 20px;
- 	font-weight: bolder;
-
- }
- .info h3{
- 	font-weight: bolder;
- 	color: black;
- 	font-size: 20px;
- 	font-weight: bolder;
-
- }
- .info p{
- 	color: gray;
- 	font-size: 15px;
- 	font-weight: bold;
-
- }
- hr{
- 	border-color:  #EAEDED;
- }
-
- .outer-container {
 	position: relative;
-	height: auto; /* Adjust height as needed */
+	background-color: #478778;
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 2%;
+	border-radius: 40px 40px 0 0;
+	min-height: 15rem;
+    display:flex;
+    flex-direction: column;
+	justify-content: center;
+    
 }
-.inner-top {
+
+.avatar {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: auto; /* Adjust height as needed */
-	background-color: #478778; /* Change color as needed */
-}
-.inner-bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: auto; /* Adjust height as needed */
-	background-color: white; /* Change color as needed */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
 }
 
-.container {
-	background-color: white;
-	padding: 0;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border:2px solid gray;
-}
-.heading {
-	font-size: 24px;
-	padding: 10px;
-	border-bottom: 2px solid #f0f0f0;
-	margin-bottom: 20px;
-	background-color:#478778;
-	color: white;
-}
-.content {
-	font-size: 16px;
-	color: #333;
-	padding:20px;
-}
- /* responiveness*/
- @media (max-width: 1500px) {
-    .profile{
-        margin:100px;
-        width: 80%;
+.avatar img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50% 50%;
+	align-content: center;
+display: block;}
+*/
 
-    }
+.heading{
+	text-align: center ;
 
- }   
+}
+.heading p{
+	font-weight: bold;
+	color: gray;
+}
+.container{
+	padding-top: 2rem;
+}
+.info p {
+	color:gray;
+}
