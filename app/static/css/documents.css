@@ -81,7 +81,11 @@ form#searchForm button:hover {
 
 .categoryFilter{
     padding: 0.5rem;
-    font-family: verdana;
+    font-family: lato;
     font-size: 9em;
     font-weight: bolder;
+}
+
+thead{
+    font-weight: bold;
 }

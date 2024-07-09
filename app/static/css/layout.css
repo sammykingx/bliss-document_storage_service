@@ -4,7 +4,7 @@
     padding: 20px;
     box-sizing: border-box;
     margin-left: 100px;
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 50px;
     height: auto;
     width: auto;
@@ -125,7 +125,7 @@
     box-sizing: border-box;
     width: calc(100% - 200px);
     margin-left: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 8px rgba(148, 143, 143, 0.9);
 }
 
 
