@@ -2,7 +2,7 @@
 #notification {
     display: none;
     position: fixed;
-    top: 10%;
+    top: 12%;
     right: 20px;
     padding: 10px 20px;
     background-color: #17df8c; /* Green background */

@@ -12,7 +12,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         method: "POST",
         body: formData
     })
-    .then(function(response) {
+    .then(response => {
         /*if (!response.ok) {
             // show server message not the hard coded message
             showNotification("Invalid email address", "warning");
@@ -20,7 +20,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         }8*/
         return response.json();
     })
-    .then(function(data) {
+    .then(data => {
         /* 
             - display a loading icon before response from the server
             - show the notification
@@ -30,7 +30,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             document.getElementById("loginForm").reset();
         }
     })
-    .catch(function(error) {
+    .catch(error => {
         console.error("Error:", error);
     });
 });

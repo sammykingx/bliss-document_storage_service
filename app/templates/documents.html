@@ -9,16 +9,21 @@
 {% block body %}
  <div class="main-content">
     <h2>My Documents</h2>
-    <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Search documents...">
-        <select id="categoryFilter">
-            <option value="">All Categories</option>
-            <option value="Personal">Personal</option>
-            <option value="Work">Work</option>
-            <option value="Finance">Finance</option>
-            <option value="Health">Health</option>
-            <option value="Education">Education</option>
-            <option value="Others">Others</option>
+    <form id="searchForm" method="POST">
+        <input type="text" id="searchInput" name="search_input" placeholder="Search documents...">
+        <select id="categoryFilter" name="doc_category">
+            <option value="">By Category</option>
+            {% for category in doc_category %}
+                <option value="{{ category.title() }}">{{ category.title() }}</option>
+            {% endfor %}
+        </select>
+        <select id="clientBranch" name="client_branch">
+        <!-- -->
+            <option value="">By Branch</option>
+                {% for branch in branches %}
+                    <option value="{{ branch.title() }}">{{ branch.title() }}</option>
+                {% endfor %}
+        
         </select>
         <button type="submit">Search</button>
     </form>
@@ -26,33 +31,42 @@
         <table>
             <thead>
                 <tr>
-                    <th>Document Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
+                    <th>docID</th>
+                    <th>clientName</th>
+                    <th>clientEmail</th>
+                    <th>docType</th>
+                    <th>originBranch</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="documentTableBody">
+            <tbody id="tableBody">
                 <!-- Document rows will be inserted here -->
                 <tr>
-                    <td>Document 1</td>
-                    <td>Description of Document 1</td>
-                    <td>Personal</td>
-                    <td>
-                        <a href="#" class="btn">View</a>
-                        <a href="#" class="btn">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Document 2</td>
-                    <td>Description of Document 2</td>
-                    <td>Work</td>
-                    <td>
-                        <a href="#" class="btn">View</a>
-                        <a href="#" class="btn">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
+                    {% if all_documents %}
+                        {% for document in all_documents %}
+                            <td>{{ document.file_id }}</td>
+                            <td>{{ document.file_name.split()[0] }}</td>
+                            <td>{{ document.doc_category }}</td>
+                            <td>{{ document.client_id }}</td>
+
+                            <td>
+                                <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">download</a>
+                                <a href="#" class="btn">view</a>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                            </td>
+                        {% endfor %}
+                    {% else %}
+                        <td>BLL-1234567</td>
+                        <td>John Doe</td>
+                        <td>email@example.com</td>
+                        <td>Deed of Transfer</td>
+                        <td>Ihama</td>
+                        <td>
+                            <a href="#" class="btn">download</a>
+                            <a href="#" class="btn">view</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    {% endif %}
                 </tr>
                 <!-- Additional document rows can go here -->
             </tbody>
@@ -62,5 +76,5 @@
 {% endblock %}
 
 {% block js_scripts %}
-    <script src={{ url_for("static", filename="js/scripts.js") }}></script>
+    <script src={{ url_for("static", filename="js/documentHandler.js") }} type="module" defer></script>
 {% endblock %}

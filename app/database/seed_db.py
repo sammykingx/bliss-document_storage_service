@@ -41,8 +41,7 @@ def run() -> None:
         # print(">>> DB Not Empty")
         return None
      
-    # print(">>> Generating seed data") 
-
+    # print(">>> Generating seed data")
     data = generate_seed_data()
 
     # print(">>> saving seed data to file")

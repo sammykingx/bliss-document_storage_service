@@ -14,10 +14,10 @@ const USER_ENDPOINTS = {
 };
 
 const DOCUMENTS_ENDPOINTS = {
-    DOCUMENTS: '/all_documents', // documents page
-    DOCUMENTS_UPLOAD: '/upload_documents', // upload document
-    DOCUMENTS_DELETE: '/delete_documents', // delete document
-    DOCUMENTS_DOWNLOAD: '/download_documents', // download document
+    All_DOCUMENTS: '/all_documents', // documents page
+    UPLOAD_DOCUMENTS: '/upload_documents', // upload document
+    DELETE_DOCUMENTS: '/delete_documents', // delete document
+    DOWNLOAD_DOCUMENTS: '/download_documents', // download document
 };
 
 export { AUTH_ENDPOINTS, USER_ENDPOINTS, DOCUMENTS_ENDPOINTS };

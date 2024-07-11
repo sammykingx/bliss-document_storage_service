@@ -9,9 +9,9 @@
 
 {% block body %}
   <!-- body content -->
-    <div class="main-content">
-        <form class="row g-3" id="uploadDocument" action="#" method="POST" enctype="multipart/form-data">
-        <h2>Upload Document</h2>
+  <div class="main-content">
+    <form class="row g-3" id="uploadDocument" action="#" method="POST" enctype="multipart/form-data">
+      <h2>Upload Document</h2>
       <div class="col-md-6">
         <label for="inputName" class="form-label">First Name</label>
         <input type="text" class="form-control" name="clientFirstName" placeholder="John" required>
@@ -33,15 +33,12 @@
         <input type="text" class="form-control" name="clientPhoneNumber" placeholder="07012345678" required>
       </div>
       <div class="col-md-4">
-        <label for="inputBranch" class="form-label"required>Branch</label>
-        <select id="inputBranch" class="form-select" name="clientBranch">
+        <label for="inputBranch" class="form-label">Branch</label>
+        <select id="inputBranch" class="form-select" name="clientBranch" required>
           <option selected>Choose...</option>
-          <option>Ihama Branch</option>
-          <option>Obakhavbaye Branch</option>
-          <option>Ikeja Branch</option>
-          <option>Ajah Branch</option>
-          <option>Abeokuta Branch</option>
-          <option>Asaba Branch</option>
+          {% for branch in branches %}
+            <option>{{ branch.capitalize() }}</option>
+          {% endfor %}
         </select>
       </div>
       <!--
@@ -53,11 +50,9 @@
         <label for="inputState" class="form-label">Document Type</label>
         <select id="inputState" class="form-select" name="documentCategory" required>
           <option selected>Choose...</option>
-          <option>Agreement Forms</option>
-          <option>Payment Receipt</option>
-          <option>Title Deeds</option>
-          <option>Certificate of Occupancy</option>
-          <option>Survey Certificate</option>
+          {% for categories in doc_category %}
+            <option>{{ categories.title() }}</option>
+          {% endfor %}
         </select>
       </div>
       <!--
@@ -67,13 +62,13 @@
       </div> -->
       <div class="mb-3">
         <label for="formFile" class="form-label">Browse Document</label>
-        <input class="form-control" type="file" name="formFile">
+        <input class="form-control" type="file" name="formFile" required>
       </div>
       <div class="col-12">
         <input class="btn btn-primary" type="submit" value="Upload To Cloud">
         <input class="btn btn-primary" type="reset" value="Reset">
       </div>
-    </form>
+    </form>    
   </div>
 
 {% endblock %}
