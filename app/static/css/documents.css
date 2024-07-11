@@ -28,6 +28,7 @@ form#searchForm button {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin-left: 1rem;
+    
 }
 
 form#searchForm button:hover {
@@ -88,4 +89,33 @@ form#searchForm button:hover {
 
 thead{
     font-weight: bold;
+}
+
+/* moblile design*/
+@media (max-width:700px){
+    
+.documents-list th{
+    display: flex;
+    padding:70px;
+    width:200px;
+    
+}
+.main-content{
+    width: 820px;
+}
+.widget{
+    margin-left:119px;
+    width:815px; 
+ }
+ footer{
+    margin-left:-80px;
+    width:810px;
+}
+.documents-list td{
+    display: flex;
+    position: relative;
+    left:200px;
+    top:-976px;
+    padding:68px;
+}
 }
