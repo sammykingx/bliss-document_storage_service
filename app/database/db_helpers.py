@@ -40,9 +40,9 @@ def document_filter_query(table: Table, search_input: str, doc_category:str, cli
         conditions.append(table.file_id.ilike(f'%{search_input}%'))
         conditions.append(table.doc_id.ilike(f'%{search_input}%'))
     if doc_category:
-        conditions.append(table.category.ilike(f'%{doc_category}%'))
+        conditions.append(table.doc_category.ilike(f'%{doc_category}%'))
     if client_branch:
-        conditions.append(table.branch.ilike(f'%{client_branch}%'))
+        conditions.append(table.client_branch.ilike(f'%{client_branch}%'))
 
     if conditions:
         query = query.filter(or_(*conditions))

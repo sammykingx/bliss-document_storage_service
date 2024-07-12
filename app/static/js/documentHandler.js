@@ -6,6 +6,7 @@ import { DOCUMENTS_ENDPOINTS } from "./endpoints.js";
  * fix the download link there
 */
 
+// get documents
 /*
 async function fetchDocuments() {
     try {
@@ -73,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 */
-
+// come back to this part
+/*
 document.getElementById("searchForm").addEventListener("submit", event => {
     event.preventDefault();
 
@@ -85,8 +87,6 @@ document.getElementById("searchForm").addEventListener("submit", event => {
         showNotification("Enter at least 1 Property to search", "warning");
         return;
     }
-
-    console.log(searchInput, docCategory, branchName);
 
     let payload = new FormData();
     
@@ -107,8 +107,11 @@ document.getElementById("searchForm").addEventListener("submit", event => {
 
         document.getElementById("searchForm").reset();
         showNotification("Still Working on it", "info");
+        // return response.json();
     })
     .catch(err => {
-        showNotification(err, "err");
+        console.log("inside the catch block");
+        showNotification(err, "error");
     })
 });
+*/

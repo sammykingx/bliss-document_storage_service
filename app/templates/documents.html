@@ -32,42 +32,51 @@
             <thead>
                 <tr>
                     <th>docID</th>
-                    <th>clientName</th>
                     <th>clientEmail</th>
                     <th>docType</th>
-                    <th>originBranch</th>
+                    <th>Branch</th>
+                    <th>Uploaded By</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
                 <!-- Document rows will be inserted here -->
-                <tr>
-                    {% if all_documents %}
-                        {% for document in all_documents %}
+                {% if all_documents %}
+                    {% for document in all_documents %}
+                        <tr>
                             <td>{{ document.file_id }}</td>
-                            <td>{{ document.file_name.split()[0] }}</td>
-                            <td>{{ document.doc_category }}</td>
                             <td>{{ document.client_id }}</td>
-
+                            <td>{{ document.doc_category }}</td>
+                            <td>{{ document.client_branch }}</td>
+                            <td>{{ document.uploaded_by }}</td>
                             <td>
-                                <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">download</a>
-                                <a href="#" class="btn">view</a>
-                                <a href="#" class="btn btn-danger">Delete</a>
+                                {% if document.file_name.split(".")[-1] == "pdf" %}
+                                    <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">view</a>
+                                
+                                {% else %}
+                                    <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">download</a>
+                                
+                                {% endif %}
+
+                                {% if user.role in ("admin", "compliance") %}
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                {% endif %}
                             </td>
-                        {% endfor %}
-                    {% else %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
                         <td>BLL-1234567</td>
-                        <td>John Doe</td>
                         <td>email@example.com</td>
-                        <td>Deed of Transfer</td>
-                        <td>Ihama</td>
+                        <td>Deed Of Transfer</td>
+                        <td>Branch</td>
+                        <td>John Doe</td>
                         <td>
                             <a href="#" class="btn">download</a>
                             <a href="#" class="btn">view</a>
                             <a href="#" class="btn btn-danger">Delete</a>
                         </td>
-                    {% endif %}
-                </tr>
+                    </tr>
+                {% endif %}
                 <!-- Additional document rows can go here -->
             </tbody>
         </table>

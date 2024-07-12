@@ -8,6 +8,7 @@ from flask import (
 )
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
+from app.database.users import Clients
 from app.database.documents import Documents
 from app.database import db_helpers
 from datetime import datetime
@@ -31,10 +32,14 @@ ALL_BRANCHES = (
     "asaba",
 )
 
-@bp.route("/render_documents")
+@bp.route("/render_documents", methods=["GET", "POST"])
 @login_required
 def render_page():
-    return render_template("documents.html")
+    return render_template(
+        "test_documents.html",
+        branches = ALL_BRANCHES,
+        doc_category = DOCUMENTS_CATEGORY,
+    )
     
 
 @bp.route("/all_documents", methods=["GET", "POST"])
@@ -51,22 +56,27 @@ def fetch_all_docs():
         )
         
         for res in results:
-            current_app.logger.info(f"result name: {res.file_name}")
+            current_app.logger.info(f"serch result file name: {res.file_name}")
         
         return render_template(
             "documents.html",
             branches = ALL_BRANCHES,
             doc_category = DOCUMENTS_CATEGORY,
             all_documents = results,
+            user = current_user,
+           # _indicator = "rendering from post"
         )
-        
+    
+    # for get request
     all_docs = db_helpers.fetch_records(Documents)
 
+    
     return render_template(
         "documents.html",
         branches = ALL_BRANCHES,
         doc_category = DOCUMENTS_CATEGORY,
         all_documents = all_docs,
+        user = current_user,
     )
     '''
     if not all_docs:
@@ -101,6 +111,7 @@ def fetch_all_docs():
     '''
 
 
+
 @bp.route("/upload_documents", methods=["GET", "POST"])
 @login_required
 def upload_doc():
@@ -108,7 +119,6 @@ def upload_doc():
         upload_file = request.files["formFile"]
         client_data = dict(request.form)
 
-        # check mimeType and file_size
         if upload_file.mimetype not in current_app.config["ALLOWED_FILE_TYPES"]:
             return jsonify(
                 message = "Only .pdf, .doc and .docx files are allowed",
@@ -126,26 +136,36 @@ def upload_doc():
         )
         
         file_id = "BLL-" + str(round(time.time()) * 2)
-        record_object = {
+        document_object = {
             "file_id": file_id,
             "doc_id": str(uuid.uuid4()),
-            "doc_category": client_data["clientBranch"],
+            "doc_category": client_data["docCategory"],
+            "client_branch": client_data["clientBranch"],
             "file_name": new_file_name, #secure_filename(upload_file.filename),
             "client_id": client_data["clientEmail"],
             "uploaded_by": current_user.name,
             "upload_time": datetime.utcnow(),
         }
         
-        file_id = db_helpers.save_record(Documents, **record_object)
-        # temporary store in file system b4 upload to s3
-        # save data to db and file id
-        # run the saving to file_system to as bg
+        client_object = {
+            "first_name": client_data["firstName"],
+            "last_name": client_data["lastName"],
+            "email": client_data["clientEmail"],
+            "address": client_data["clientAddress"],
+            "phone_number": client_data["phoneNumber"],
+        }
+        
+        file_id = db_helpers.save_record(Documents, **document_object)
+        registerd = Clients.query.filter_by(email=client_data["clientEmail"])
+        if not registerd:
+            db_helpers.save_record(Clients, **client_object)
 
-        current_app.logger.info(upload_file.filename, new_file_name)
+        # run the the upload to s3 on the bg
 
         return jsonify(
             message="File upload successful",
-            category="success",
+            category="info",
+            status="success",
         )
 
     return render_template(
