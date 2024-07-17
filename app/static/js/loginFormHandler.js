@@ -16,6 +16,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     formData.append('email', email);
     formData.append('password', password);
 
+    document.getElementById('spinner').style.display = "block";
+
     fetch(AUTH_ENDPOINTS.LOGIN, {
         method: 'POST',
         body: formData
@@ -24,6 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         return response.json();
     })
     .then(function(data) {
+        document.getElementById('spinner').style.display = "none";
         showNotification(data.message, data.category);
 
         /* if (data.redirect) {
@@ -37,6 +40,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         }
     })
     .catch(function(error) {
+        document.getElementById('spinner').style.display = "none";
         console.error('Error:', error);
     });
 });

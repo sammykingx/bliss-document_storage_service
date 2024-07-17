@@ -6,6 +6,12 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
 
+
+    if (!token) {
+        showNotification("Request a reset token to proceed", "error");
+        return;   
+    }
+
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -23,6 +29,8 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
     formData.append('password', password);
     formData.append('token', token);
 
+    document.getElementById('spinner').style.display = "block";
+
     fetch(AUTH_ENDPOINTS.RESET_PASSWORD, {
         method: 'POST',
         body: formData
@@ -31,6 +39,7 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
         return response.json();
     })
     .then(function(data) {
+        document.getElementById('spinner').style.display = "none";
         showNotification(data.message, data.category);
         if (data.category === "success") {
             document.getElementById("changePasswordForm").reset();
@@ -40,6 +49,7 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
         }
     })
     .catch(function(error) {
+        document.getElementById('spinner').style.display = "none";
         console.error('Error:', error);
     });
 });

@@ -8,6 +8,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     let formData = new FormData();
     formData.append("email", email);
 
+    document.getElementById('spinner').style.display = "block";
+
     fetch(AUTH_ENDPOINTS.RESET_PASSWORD_REQUEST, {
         method: "POST",
         body: formData
@@ -24,13 +26,15 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         /* 
             - display a loading icon before response from the server
             - show the notification
-        */ 
+        */
+        document.getElementById('spinner').style.display = "none";
         showNotification(data.message, data.category);
         if (data.category === "info") {
             document.getElementById("loginForm").reset();
         }
     })
     .catch(error => {
+        document.getElementById('spinner').style.display = "none";
         console.error("Error:", error);
     });
 });
