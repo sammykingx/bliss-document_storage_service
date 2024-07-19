@@ -12,6 +12,14 @@ def index():
         "index.html",
         login_url=url_for("auth.user_checkpoint"))
 
-
+@app.route("/test_route")
+def test_route():
+    "Test route"
+    
+    return render_template(
+        "demo/demo_layout.html",)
+        #login_url=url_for("auth.user_checkpoint"))
+    
+    
 if __name__ == "__main__":
     app.run()

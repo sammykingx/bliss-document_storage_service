@@ -9,10 +9,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href={{ url_for("static", filename="css/login.css") }}> <!-- Link to your CSS file -->
-        <link rel="stylesheet" href={{ url_for("static", filename="css/notification.css") }}>
+        <link rel="stylesheet" href={{ url_for("static", filename="css/components/spinner.css") }}>
+        <link rel="stylesheet" href={{ url_for("static", filename="css/components/notification.css") }}>
     
     </head>
     <body class="body">
+        <div id="spinner" class="spinner" style="display: none;"></div>
         <div class="login-container">
             <div class="log">
                 <form id="loginForm" action="#" method="POST">

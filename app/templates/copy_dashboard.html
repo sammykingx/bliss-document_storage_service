@@ -1,0 +1,89 @@
+{% extends "layout.html" %} {% block title %}Page title{% endblock %} {% block
+css_styles %}
+<!-- your css styles per page -->
+<link rel="stylesheet" href={{ url_for("static", filename="css/dashboard.css")
+}}> {% endblock %} {% block body %}
+<!-- body content -->
+<div class="main-content">
+  <h2>Dashboard</h2>
+  <h5>Welcome, {{ user.name }}.</h5>
+  <div class="card">
+    <p>Here you can manage your documents, upload new files, and much more.</p>
+    <a href="my-documents.html" class="btn">Get Started</a>
+  </div>
+
+  <div class="container">
+    <div class="heading"><h4>Documents by Branches</h4></div>
+    <div class="content">
+      <div class="branch-cards">
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Ihama</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Obakhavbaye</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Ikeja</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Ajah</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Abeokuta</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="branch-card">
+          <h3>Asaba</h3>
+          <p>Documents: 4</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container2">
+    <div class="heading"><h4>Recent Uploads</h4></div>
+    <div class="content">
+      <div class="stats-cards">
+        <a href="my-documents.html?category=Personal" class="stats-card">
+          <h3>Personal</h3>
+          <p>Documents: 10</p>
+        </a>
+
+        <a href="my-documents.html?category=Work" class="stats-card">
+          <h3>Work</h3>
+          <p>Documents: 8</p>
+        </a>
+
+        <a href="my-documents.html?category=Health" class="stats-card">
+          <h3>Health</h3>
+          <p>Documents: 3</p>
+        </a>
+        <a href="my-documents.html?category=Education" class="stats-card">
+          <h3>Education</h3>
+          <p>Documents: 7</p>
+        </a>
+
+        <a href="my-documents.html?category=Others" class="stats-card">
+          <h3>Others</h3>
+          <p>Documents: 4</p>
+        </a>
+
+        <a href="my-documents.html?category=Others" class="stats-card">
+          <h3>Others</h3>
+          <p>Documents: 4</p>
+        </a>
+        <a href="my-documents.html?category=Others" class="stats-card">
+          <h3>Others</h3>
+          <p>Documents: 4</p>
+        </a>
+      </div>
+    </div>
+
+    {% endblock %}
+    <!-- your js script tag-->
+  </div>
+</div>

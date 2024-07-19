@@ -1,0 +1,174 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url_for("user.user_dashboard") }}>
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <!-- Example Nav Dropdwon submenu
+        <li class="nav-item">
+            <a
+                class="nav-link collapsed"
+                data-bs-target="#forms-nav"
+                data-bs-toggle="collapse"
+                href="#"
+            >
+                <i class="bi bi-cloud-arrow-up"></i><span>Upload File</span>
+                <i class="bi bi-chevron-down ms-auto"></i> <!--Down arrow to indicate submenu
+            </a>
+            <ul
+                id="forms-nav"
+                class="nav-content collapse"
+                data-bs-parent="#sidebar-nav"
+            >
+                <li>
+                    <a href="forms-elements.html">
+                        <i class="bi bi-circle"></i><span>Form Elements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="bi bi-circle"></i><span>Form Layouts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-editors.html">
+                        <i class="bi bi-circle"></i><span>Form Editors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-validation.html">
+                        <i class="bi bi-circle"></i><span>Form Validation</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- End Example Nav Dropdwon submenu -->
+
+        <!-- Upload Nav Bar -->
+        <li class="nav-item">
+            <a
+                class="nav-link collapsed"
+                data-bs-target="#upload-nav"
+                data-bs-toggle="collapse"
+                href={{ url_for("documents.upload_doc") }}
+            >
+                <i class="bi bi-cloud-arrow-up"></i><span>Upload File</span>
+                <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
+            </a>
+
+        </li>
+        
+        <!-- Documents Nav Bar -->
+        <li class="nav-item">
+            <a
+                class="nav-link collapsed"
+                data-bs-target="#documents-nav"
+                data-bs-toggle="collapse"
+                href={{ url_for("documents.fetch_all_docs") }}
+            >
+                <i class="bi bi-folder-check"></i><span>My Documents</span>
+                <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
+            </a>
+        </li>
+
+        <!-- Profile Nav Bar -->
+        <li class="nav-item">
+            <a
+                class="nav-link collapsed"
+                data-bs-target="#profile-nav"
+                data-bs-toggle="collapse"
+                href={{ url_for("user.user_profile") }}
+            >
+                <i class="bi bi-person"></i><span>Profile</span>
+                <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
+            </a>
+
+        </li>
+
+        <!-- Logout Nav Bar -->
+        <li class="nav-item">
+            <a
+                class="nav-link collapsed"
+                data-bs-target="#logout-nav"
+                data-bs-toggle="collapse"
+                href={{ url_for("auth.user_logout") }}
+            >
+                <i class="bi bi-box-arrow-right"></i><span>Logout</span>
+                <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
+            </a>
+
+        </li>
+        
+        <!--
+
+        New Navigation menus can be added here
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#tables-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+
+          New Navigation sub menus can be added here
+          <ul
+            id="tables-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="tables-general.html">
+                <i class="bi bi-circle"></i><span>General Tables</span>
+              </a>
+            </li>
+            <li>
+              <a href="tables-data.html">
+                <i class="bi bi-circle"></i><span>Data Tables</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Tables Nav
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#charts-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bar-chart"></i><span>Charts</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="charts-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>Chart.js</span>
+              </a>
+            </li>
+            <li>
+              <a href="charts-apexcharts.html">
+                <i class="bi bi-circle"></i><span>ApexCharts</span>
+              </a>
+            </li>
+            <li>
+              <a href="charts-echarts.html">
+                <i class="bi bi-circle"></i><span>ECharts</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Charts Nav -->
+    </ul>
+</aside>

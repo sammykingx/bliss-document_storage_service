@@ -1,0 +1,22 @@
+/* Notification styling */
+#notification {
+  display: none;
+  position: fixed;
+  top: 12%;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #d1e7dd; /*#17df8c; /* Green background */
+  color: rgb(253, 251, 251);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+/* Notification for warning */
+#notification.warning {
+  background-color: #fff3cd; /* #FFBF17 Orange background */
+}
+/* notification for error */
+#notification.error {
+  background-color: #f8d7da; /* #FF2B01 Red background */
+}

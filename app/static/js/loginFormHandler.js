@@ -1,32 +1,33 @@
-import { AUTH_ENDPOINTS } from './endpoints.js';
+import { AUTH_ENDPOINTS } from "./endpoints.js";
 
-document.getElementById("loginForm").addEventListener("submit", function(event) {
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    if (email.trim() === '' || password.trim() === '') {
-        showNotification("Email or password cannot be empty", "warning");
-        document.getElementById("loginform").reset();
-        return;
+    if (email.trim() === "" || password.trim() === "") {
+      showNotification("Email or password cannot be empty", "warning");
+      return;
     }
 
     let formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
+    formData.append("email", email);
+    formData.append("password", password);
 
-    document.getElementById('spinner').style.display = "block";
+    document.getElementById("spinner").style.display = "block";
 
     fetch(AUTH_ENDPOINTS.LOGIN, {
-        method: 'POST',
-        body: formData
+      method: "POST",
+      body: formData,
     })
-    .then(function(response) {
+      .then(function (response) {
         return response.json();
-    })
-    .then(function(data) {
-        document.getElementById('spinner').style.display = "none";
+      })
+      .then(function (data) {
+        document.getElementById("spinner").style.display = "none";
         showNotification(data.message, data.category);
 
         /* if (data.redirect) {
@@ -34,13 +35,13 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         } */
 
         if (data.redirect) {
-            setTimeout(function() {
-                window.location.href = data.redirect;
-            }, 1500); // Adding a slight delay to show the notification
+          setTimeout(function () {
+            window.location.href = data.redirect;
+          }, 1500); // Adding a slight delay to show the notification
         }
-    })
-    .catch(function(error) {
-        document.getElementById('spinner').style.display = "none";
-        console.error('Error:', error);
-    });
-});
+      })
+      .catch(function (error) {
+        document.getElementById("spinner").style.display = "none";
+        console.error("Error:", error);
+      });
+  });
