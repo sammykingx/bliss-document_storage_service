@@ -5,7 +5,7 @@
   top: 12%;
   right: 20px;
   padding: 10px 20px;
-  background-color: #d1e7dd; /*#17df8c; /* Green background */
+  background-color: #44C113; /*#17df8c; /* Green background */
   color: rgb(253, 251, 251);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -14,9 +14,9 @@
 }
 /* Notification for warning */
 #notification.warning {
-  background-color: #fff3cd; /* #FFBF17 Orange background */
+  background-color: #F3C716; /* #FFBF17 Orange background */
 }
 /* notification for error */
 #notification.error {
-  background-color: #f8d7da; /* #FF2B01 Red background */
+  background-color: #E4080A; /* #FF2B01 Red background */
 }

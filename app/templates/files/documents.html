@@ -1,0 +1,69 @@
+{% extends "site_layout/demo_layout.html" %}
+
+{% block title %}User Documets{% endblock %}
+
+{% block css_styles %}
+    <!-- <link rel="stylesheet" href={{ url_for("static", filename="css/documents.css") }}> -->
+{% endblock %}
+
+{% block menu_title%} My Documents {% endblock %}
+{% block page_body %}
+<section>
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Showing All Documents</h5>
+
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Id</th>
+                <th scope="col">Client</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Category</th>
+                <th scope="col">More</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% if all_documents %}
+                    {% for doc in all_documents %}
+                        <tr>
+                            <th scope="row">{{ all_documents.index(doc) + 1 }}</th>
+                            <td>{{ doc.file_id }}<br>
+                                <h6><span class="badge border-info border-1 text-info">{{ doc.upload_time.strftime('%B %d, %Y at %I:%M %p') }}</span></h6>
+                            </td>
+                            <td>{{ doc.client_id}}<br><span class="badge bg-success">{{ user.email }}</span></td>
+                            <td>{{ doc.client_branch.capitalize() }}</td>
+                            <td>{{ doc.doc_category.capitalize() }}</td>
+                            <td>
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Bridie Kessler</td>
+                        <td>Developer</td>
+                        <td>35</td>
+                        <td>2014-12-05</td>
+                        <td>
+                            <button>
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js_scripts %}
+    <script src={{ url_for("static", filename="js/documentHandler.js") }} type="module" defer></script>
+{% endblock %}

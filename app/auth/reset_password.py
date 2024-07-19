@@ -48,7 +48,7 @@ def reset_password():
             redirect_url=url_for("auth.user_checkpoint"),
         )
     
-    return render_template("reset_password.html")
+    return render_template("auth/reset_password.html")
 
 
 @auth_bp.route("/request_email_token", methods=["GET", "POST"])
@@ -87,4 +87,4 @@ def verify_user_email():
             category="info",
         )       
 
-    return render_template("request_password_token.html")
+    return render_template("auth/request_password_token.html")

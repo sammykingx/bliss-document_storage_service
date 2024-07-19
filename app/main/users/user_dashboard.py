@@ -7,4 +7,4 @@ from . import user_bp
 @login_required
 def user_dashboard():
     
-    return render_template("dashboard.html", user=current_user)
+    return render_template("users/dashboard.html", user=current_user)

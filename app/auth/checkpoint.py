@@ -60,4 +60,4 @@ def user_checkpoint():
                 "redirect": next_url,
             })
     
-    return render_template("login.html")
+    return render_template("auth/login.html")

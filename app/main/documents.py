@@ -72,7 +72,7 @@ def fetch_all_docs():
 
     
     return render_template(
-        "documents.html",
+        "files/documents.html",
         branches = ALL_BRANCHES,
         doc_category = DOCUMENTS_CATEGORY,
         all_documents = all_docs,
@@ -129,12 +129,14 @@ def upload_doc():
             str(uuid.uuid4()), 
             upload_file.filename.split(".")[-1],
         )
-
+        
+        '''
         upload_file.save(
             os.path.join(current_app.config["UPLOAD_FOLDER"], new_file_name),
             buffer_size= 250 * 1024,
         )
-        
+        '''
+                
         file_id = "BLL-" + str(round(time.time()) * 2)
         document_object = {
             "file_id": file_id,
@@ -169,7 +171,7 @@ def upload_doc():
         )
 
     return render_template(
-        "uploads.html",
+        "files/uploads.html",
         branches = ALL_BRANCHES,
         doc_category = DOCUMENTS_CATEGORY,
     )

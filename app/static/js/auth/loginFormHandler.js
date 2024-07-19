@@ -1,4 +1,4 @@
-import { AUTH_ENDPOINTS } from "./endpoints.js";
+import { AUTH_ENDPOINTS } from "../endpoints.js";
 
 document
   .getElementById("loginForm")

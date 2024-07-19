@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href={{ url_for("static", filename="css/login.css") }}> <!-- Link to your CSS file -->
+        <link rel="stylesheet" href={{ url_for("static", filename="css/auth/login.css") }}> <!-- Link to your CSS file -->
         <link rel="stylesheet" href={{ url_for("static", filename="css/components/spinner.css") }}>
         <link rel="stylesheet" href={{ url_for("static", filename="css/components/notification.css") }}>
     
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div id="notification"></div>
-        <script src={{ url_for("static", filename="js/notifications.js") }} defer></script>
-        <script src={{ url_for("static", filename="js/loginFormHandler.js") }} type="module"></script>
+        <script src={{ url_for("static", filename="js/utils/notifications.js") }} defer></script>
+        <script src={{ url_for("static", filename="js/auth/loginFormHandler.js") }} type="module"></script>
     </body>
 </html>

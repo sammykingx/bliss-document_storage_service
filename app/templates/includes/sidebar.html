@@ -52,8 +52,6 @@
         <li class="nav-item">
             <a
                 class="nav-link collapsed"
-                data-bs-target="#upload-nav"
-                data-bs-toggle="collapse"
                 href={{ url_for("documents.upload_doc") }}
             >
                 <i class="bi bi-cloud-arrow-up"></i><span>Upload File</span>
@@ -66,8 +64,6 @@
         <li class="nav-item">
             <a
                 class="nav-link collapsed"
-                data-bs-target="#documents-nav"
-                data-bs-toggle="collapse"
                 href={{ url_for("documents.fetch_all_docs") }}
             >
                 <i class="bi bi-folder-check"></i><span>My Documents</span>
@@ -79,8 +75,6 @@
         <li class="nav-item">
             <a
                 class="nav-link collapsed"
-                data-bs-target="#profile-nav"
-                data-bs-toggle="collapse"
                 href={{ url_for("user.user_profile") }}
             >
                 <i class="bi bi-person"></i><span>Profile</span>
@@ -93,8 +87,6 @@
         <li class="nav-item">
             <a
                 class="nav-link collapsed"
-                data-bs-target="#logout-nav"
-                data-bs-toggle="collapse"
                 href={{ url_for("auth.user_logout") }}
             >
                 <i class="bi bi-box-arrow-right"></i><span>Logout</span>

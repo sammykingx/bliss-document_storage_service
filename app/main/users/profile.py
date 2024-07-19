@@ -6,10 +6,10 @@ from . import user_bp
 @user_bp.route("/profile")
 @login_required
 def user_profile():
-    return render_template("profile.html", user=current_user)
+    return render_template("users/profile.html", user=current_user)
 
 
-@user_bp.route("/update_profile")
+@user_bp.route("/update_profile", methods=["POST"])
 @login_required
 def update_profile():
     return "<h2>Update Profile</h2>"

@@ -1,4 +1,4 @@
-import { DOCUMENTS_ENDPOINTS } from "./endpoints.js";
+import { DOCUMENTS_ENDPOINTS } from "../endpoints.js";
 
 document.getElementById("uploadDocument").addEventListener("submit", event => {
     event.preventDefault();
@@ -20,6 +20,7 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
     }
 
     let payload = new FormData();
+    
     payload.append("firstName", firstName);
     payload.append("lastName", lastName);
     payload.append("clientAddress", clientAddress);
@@ -28,8 +29,6 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
     payload.append("clientBranch", clientBranch);
     payload.append("docCategory", docCategory);
     payload.append("formFile", formFile);
-
-    console.log(payload);
     
     fetch(
         DOCUMENTS_ENDPOINTS.UPLOAD_DOCUMENTS, {
@@ -41,6 +40,7 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
             showNotification("Unable to upload file", "warning");
             return;
         }
+        console.log("Upload succ");
         showNotification("File Upload Successful", "info");
         document.getElementById("uploadDocument").reset();
     })

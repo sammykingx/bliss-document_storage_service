@@ -1,4 +1,4 @@
-import { DOCUMENTS_ENDPOINTS } from "./endpoints.js";
+import { DOCUMENTS_ENDPOINTS } from "../endpoints.js";
 
 /*
  * make a request to get all documents
