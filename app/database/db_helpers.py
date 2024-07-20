@@ -49,3 +49,8 @@ def document_filter_query(table: Table, search_input: str, doc_category:str, cli
 
     results = query.all()
     return results
+
+
+def fetch_recent_files(table: Table, limit: int=7) -> list[Row]:
+    record = table.query.order_by(table.upload_time.desc()).limit(7).all()
+    return record

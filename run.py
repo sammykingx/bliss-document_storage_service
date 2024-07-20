@@ -9,7 +9,7 @@ def index():
     "The Index Page"
     
     return render_template(
-        "demo_frontend/index.html",
+        "index.html",
         login_url=url_for("auth.user_checkpoint"))
 
 
