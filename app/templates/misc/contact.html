@@ -1,0 +1,56 @@
+{% extends "site_layout/demo_layout.html" %}
+
+{% block title %}Developer Support{% endblock %}
+
+{% block menu_title %}Contact Dev Team{% endblock %}
+{% block css_styles %}
+    <!-- your css styles per page -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/misc/contact_form.css") }}>
+{% endblock %}
+
+{% block page_body %}
+    <!-- body content -->
+     <div class="col-xl-6">
+          <div class="card p-4">
+            <form action="#" method="post" class="contact-form">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" value="{{ user.name }}" placeholder="Your Name" disabled>
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" value="{{ user.email }}" disabled>
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <!-- -->
+
+                  <button type="submit">Send Message <i class="bi bi-mailbox"></i></button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+{% endblock %}
+<!-- your js script tag-->
+ 
+ {% block specific_js %}
+    <!-- your  js files per page-->
+    <script src={{ url_for("static", filename="js/#") }}></script>
+ {% endblock %}

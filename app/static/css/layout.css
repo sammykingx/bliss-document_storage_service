@@ -61,7 +61,7 @@
 /* Sidebar Styling */
 .sidebar {
     background-color: #478778;
-    width: 200px;
+    width: 150px;
     padding: 1rem;
     flex-shrink: 0;
     font-family: lato;
@@ -277,10 +277,11 @@ footer p {
     width:89%;
   }
 }
+/*
 @media (min-width:768px){
  
 @media (min-width:1200px){
  
 
 @media (min-width:1500px){
-}
+}*/

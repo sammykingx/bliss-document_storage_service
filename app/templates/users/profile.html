@@ -103,8 +103,44 @@
                   <div class="col-md-8 col-lg-9">
                     <img src={{ url_for("static", filename="images/layout/default_avatar.png") }} alt="Profile">
                     <div class="pt-2">
+                      <button 
+                        type="button" 
+                        class="btn btn-primary btn-sm" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#uploadProfileImage"
+                        title="Upload new profile image"
+                      >
+                        <i class="bi bi-upload"></i>
+                      </button>
+                      <!--
                       <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                      -->
+                      <!-- <a href="#" id="thrashPicture" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
+                      <button
+                        id="thrashPicture" 
+                        class="btn btn-danger btn-sm" 
+                        title="Remove my profile image">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                    <div class="modal fade" id="uploadProfileImage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Upload Profile Image</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form method="post" enctype="multipart/form-data">
+                              <input type="file" class="form-control" id="profileImage" accept=".png,.jpg">
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                            <button id="profileImageUpload" type="submit" class="btn btn-success">Upload</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -140,7 +176,7 @@
                 <div class="row mb-3">
                   <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="country" type="text" class="form-control" id="Country" value="Nigeria">
+                    <input name="country" type="text" class="form-control" id="Country" value="Nigeria" disabled>
                   </div>
                 </div>
 
@@ -154,14 +190,14 @@
                 <div class="row mb-3">
                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                    <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 29071" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="email" type="email" class="form-control" id="Email" value={{ user.email }}>
+                    <input name="email" type="email" class="form-control" id="Email" value={{ user.email }} disabled>
                   </div>
                 </div>
 
@@ -194,7 +230,7 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                  <button id="updateProfile" type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
               </form><!-- End Profile Edit Form -->
 
@@ -226,7 +262,7 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Change Password</button>
+                  <button id="updatePassword" type="submit" class="btn btn-primary">Change Password</button>
                 </div>
               </form><!-- End Change Password Form -->
 
@@ -241,4 +277,27 @@
   </div>
 </section>
 {% endblock %}
-<!--your js script tag-->
+{% block specific_js %}
+    <!-- your  js files per page-->
+    <script>
+      document.getElementById("thrashPicture").addEventListener("click", () => {
+        showNotification("Delete functionality not enabled yet", "info");
+      });
+
+      document.getElementById("updateProfile").addEventListener("click", (event) => {
+        event.preventDefault();
+        showNotification("Profile Update functionality not enabled yet", "info");
+      });
+
+      document.getElementById("updatePassword").addEventListener("click", (event) => {
+        event.preventDefault();
+        showNotification("Password Update functionality not enabled yet", "info");
+      });
+
+      document.getElementById("profileImageUpload").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        showNotification("Profile Image Upload functionality not enabled yet", "info");
+      });
+    </script>
+ {% endblock %}

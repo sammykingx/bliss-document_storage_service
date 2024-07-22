@@ -31,15 +31,6 @@ ALL_BRANCHES = (
     "abeokuta",
     "asaba",
 )
-
-@bp.route("/render_documents", methods=["GET", "POST"])
-@login_required
-def render_page():
-    return render_template(
-        "test_documents.html",
-        branches = ALL_BRANCHES,
-        doc_category = DOCUMENTS_CATEGORY,
-    )
     
 
 @bp.route("/all_documents", methods=["GET", "POST"])
@@ -130,12 +121,12 @@ def upload_doc():
             upload_file.filename.split(".")[-1],
         )
         
-        '''
+
         upload_file.save(
             os.path.join(current_app.config["UPLOAD_FOLDER"], new_file_name),
             buffer_size= 250 * 1024,
         )
-        '''
+
                 
         file_id = "BLL-" + str(round(time.time()) * 2)
         document_object = {
@@ -172,6 +163,7 @@ def upload_doc():
 
     return render_template(
         "files/uploads.html",
+        user=current_user,
         branches = ALL_BRANCHES,
         doc_category = DOCUMENTS_CATEGORY,
     )
@@ -186,7 +178,6 @@ def download_document(file_name):
         file_name,
     )
     
-    # return "<h2>Download Document</h2>"
 
 
 @bp.route("/delete_documents")

@@ -4,7 +4,7 @@ from app.extensions import db, migrate, mail
 from app.extensions.login_system import login_manager
 from app.database import seed_db
 from . import auth
-from .main import users, documents
+from .main import users, docs, documents, support
 
 
 def create_app(config_class: object = DevelopmentConfig) -> Flask:
@@ -31,5 +31,6 @@ def create_app(config_class: object = DevelopmentConfig) -> Flask:
     app.register_blueprint(auth.auth_bp)
     app.register_blueprint(users.user_bp)
     app.register_blueprint(documents.bp)
-    
+    app.register_blueprint(docs.bp)
+    app.register_blueprint(support.bp)
     return app

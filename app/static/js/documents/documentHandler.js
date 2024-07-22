@@ -115,3 +115,7 @@ document.getElementById("searchForm").addEventListener("submit", event => {
     })
 });
 */
+
+document.addEventListener("DOMContentLoaded", () => {
+    showNotification("All files loaded Succesffully", "info");
+});
