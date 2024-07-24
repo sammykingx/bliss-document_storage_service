@@ -33,8 +33,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             document.getElementById("loginForm").reset();
         }
     })
-    .catch(error => {
+    .catch(err => {
         document.getElementById('spinner').style.display = "none";
-        console.error("Error:", error);
+        showNotification(err, "error");
     });
 });

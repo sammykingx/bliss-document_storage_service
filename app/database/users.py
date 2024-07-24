@@ -34,7 +34,9 @@ class Clients(db.Model):
     phone_number = db.Column(db.String(30), nullable=False)
     alt_number = db.Column(db.String(30))
     address = db.Column(db.String(170))
+    branch = db.Column(db.String(40))
     next_of_kin = db.Column(db.String(50))
+    documents = db.relationship("Documents", back_populates="client", lazy=True)
     
     def __repr__(self) -> str:
         return f"(name: {self.first_name} {self.last_name}) " \

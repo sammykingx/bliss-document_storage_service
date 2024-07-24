@@ -48,8 +48,8 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
             }, 3800);
         }
     })
-    .catch(function(error) {
+    .catch(function(err) {
         document.getElementById('spinner').style.display = "none";
-        console.error('Error:', error);
+        showNotification(err, "error");
     });
 });

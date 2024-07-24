@@ -40,8 +40,8 @@ document
           }, 1500); // Adding a slight delay to show the notification
         }
       })
-      .catch(function (error) {
+      .catch(function (err) {
         document.getElementById("spinner").style.display = "none";
-        console.error("Error:", error);
+        showNotification(err, "error");
       });
   });

@@ -1,6 +1,6 @@
 {% extends "site_layout/demo_layout.html" %}
 
-{% block title %}User Documets{% endblock %}
+{% block title %}User Documents{% endblock %}
 
 {% block css_styles %}
     <link rel="stylesheet" href={{ url_for("static", filename="css/components/document_dropdown.css") }}>
@@ -36,8 +36,11 @@
                                 </a>
                                 <h6><span class="badge border-info border-1 text-info">{{ doc.upload_time.strftime('%B %d, %Y at %I:%M %p') }}</span></h6>
                             </td>
-                            <td>{{ doc.client_id}}<br><span class="badge bg-success">{{ user.email }}</span></td>
-                            <td>{{ doc.client_branch.capitalize() }}</td>
+                            <td>
+                                {{ doc.client.last_name }} {{ doc.client.first_name }}<br>
+                                <span class="badge bg-success">{{ doc.client_id }}</span>
+                            </td>
+                            <td>{{ doc.client.branch.capitalize() }}</td>
                             <td>{{ doc.doc_category.capitalize() }}</td>
                             <td>
                                 <div class="dropdown">
@@ -73,12 +76,12 @@
                 {% else %}
                     <tr>
                         <th scope="row">2</th>
+                        <td>BLL-1234567890</td>
                         <td>Bridie Kessler</td>
-                        <td>Developer</td>
-                        <td>35</td>
-                        <td>2014-12-05</td>
+                        <td>Obakhavbaye</td>
+                        <td>Deed Of Transfer</td>
                         <td>
-                            <button>
+                            <button class="btn btn-warning btn-sm dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                         </td>

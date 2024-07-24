@@ -120,41 +120,38 @@ def upload_doc():
             str(uuid.uuid4()), 
             upload_file.filename.split(".")[-1],
         )
-        
-
-        upload_file.save(
-            os.path.join(current_app.config["UPLOAD_FOLDER"], new_file_name),
-            buffer_size= 250 * 1024,
-        )
-
                 
         file_id = "BLL-" + str(round(time.time()) * 2)
         document_object = {
             "file_id": file_id,
             "doc_id": str(uuid.uuid4()),
             "doc_category": client_data["docCategory"],
-            "client_branch": client_data["clientBranch"],
             "file_name": new_file_name, #secure_filename(upload_file.filename),
             "client_id": client_data["clientEmail"],
             "uploaded_by": current_user.name,
             "upload_time": datetime.utcnow(),
         }
         
-        client_object = {
-            "first_name": client_data["firstName"],
-            "last_name": client_data["lastName"],
-            "email": client_data["clientEmail"],
-            "address": client_data["clientAddress"],
-            "phone_number": client_data["phoneNumber"],
-        }
-        
         file_id = db_helpers.save_record(Documents, **document_object)
-        registerd = Clients.query.filter_by(email=client_data["clientEmail"])
+        registerd = db_helpers.fetch_records(Clients, email=client_data["clientEmail"])
         if not registerd:
+            client_object = {
+                "first_name": client_data["firstName"],
+                "last_name": client_data["lastName"],
+                "email": client_data["clientEmail"],
+                "address": client_data["clientAddress"],
+                "phone_number": client_data["phoneNumber"],
+                "branch": client_data["clientBranch"],
+            }
+            
             db_helpers.save_record(Clients, **client_object)
 
         # run the the upload to s3 on the bg
-
+        upload_file.save(
+            os.path.join(current_app.config["UPLOAD_FOLDER"], new_file_name),
+            buffer_size= 250 * 1024,
+        )
+        
         return jsonify(
             message="File upload successful",
             category="info",

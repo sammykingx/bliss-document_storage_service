@@ -280,7 +280,8 @@
 {% block specific_js %}
     <!-- your  js files per page-->
     <script>
-      document.getElementById("thrashPicture").addEventListener("click", () => {
+      document.getElementById("thrashPicture").addEventListener("click", (event) => {
+        event.preventDefault();
         showNotification("Delete functionality not enabled yet", "info");
       });
 
