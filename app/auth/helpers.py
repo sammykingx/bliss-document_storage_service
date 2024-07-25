@@ -1,6 +1,9 @@
 from flask import Flask, url_for
 from itsdangerous import URLSafeTimedSerializer
 from itsdangerous.exc import SignatureExpired
+from werkzeug.security import generate_password_hash
+from sqlalchemy import Table
+from app.extensions import db
 from dotenv import load_dotenv
 import os
 
@@ -58,3 +61,13 @@ def get_token_data(token: str) -> dict[str, str]:
             "valid": False,
             "message": "expired email token",
         }
+        
+        
+def update_password(user_record: Table, password: str) -> None:
+    "Updates user password"
+    
+    user_record.password = generate_password_hash(password)
+        
+    db.session.add(user_record)
+    db.session.commit()
+    db.session.refresh(user_record)

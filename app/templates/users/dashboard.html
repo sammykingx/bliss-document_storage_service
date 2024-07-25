@@ -10,7 +10,7 @@
 {% block menu_title %} Dashboard {% endblock %}
 {% block page_body %}
 <!-- body content -->
-  <section class="section dashboard">
+  <section class="section dashboard m-3">
     <div class="row">
       <div class="row">
 
@@ -76,7 +76,7 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-inboxes"></i>
+                      <i class="bi bi-folder"></i>
                     </div>
                     <div class="ps-3">
                       <h6>3,264</h6>
@@ -244,10 +244,13 @@
                           {% for recent_upload in recent_uploads %}
                               <tr>
                                 <th scope="row"><a href="#">{{ recent_upload.file_id }}</a></th>
-                                <td>{{ recent_upload.client_id }}</td>
+                                <td>
+                                  {{ recent_upload.client.last_name.capitalize() }}
+                                  {{ recent_upload.client.first_name.capitalize() }}
+                                </td>
                                 <td><a href="#" class="text-primary">{{ recent_upload.doc_category }}</a></td>
                                 <td>{{ recent_upload.upload_time.strftime("%B %d, %Y at %I:%M %p")}}</td>
-                                <td><span class="badge bg-success">{{ recent_upload.client_branch }}</span></td>
+                                <td><span class="badge bg-success">{{ recent_upload.client.branch.capitalize() }}</span></td>
                               </tr>
                           {% endfor %}
                       {% else %}

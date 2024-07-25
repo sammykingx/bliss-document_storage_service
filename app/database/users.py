@@ -8,6 +8,13 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(40), primary_key=True, index=True)
     password = db.Column(db.String(170), nullable=False)
     role = db.Column(db.String(15))
+    '''
+    address = db.Column(db.String(150))
+    phone_number = db.Column(db.Integer)
+    alt_number = db.Column(db.Integer)
+    about = db.Column(db.Text)
+    img_url = db.Column(db.)
+    '''
     is_verified = db.Column(db.Boolean)
 
     

@@ -35,11 +35,7 @@ def reset_password():
             ), 400
             
         user_record = db_helpers.fetch_records(Users, email=token_data["data"])
-        user_record.password = generate_password_hash(form_data["password"])
-        
-        db.session.add(user_record)
-        db.session.commit()
-        db.session.refresh(user_record)
+        helpers.update_password(user_record, form_data["password"])
     
         current_app.logger.info(f"User password changed: {user_record.email}")
         return jsonify(

@@ -20,3 +20,7 @@
 #notification.error {
   background-color: #DC3545; /* #FF2B01 Red background */
 }
+/* notification for info */
+#notification.info {
+  background-color: #2196F3; /* #FF2B01 Red background */
+}

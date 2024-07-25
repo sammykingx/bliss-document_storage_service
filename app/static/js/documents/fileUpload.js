@@ -15,7 +15,6 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
 
     if (formFile.size > (5 * 1024 *1024)) {
         showNotification("file should be less then 5mb", "warning");
-        //document.getElementById("formFile").requestFullscreen();
         return;
     }
 

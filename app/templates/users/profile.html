@@ -8,7 +8,7 @@
 
 {% block menu_title %} User Profile {% endblock %}
 {% block page_body %}
-<section class="section profile">
+<section class="section profile ms-3 me-3">
   <div class="row">
     <div class="col-xl-4">
 
@@ -59,17 +59,17 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                <div class="col-lg-9 col-md-8">{{ user.name }}</div>
+                <div class="col-lg-9 col-md-8">{{ user.name.capitalize() }}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Company</div>
-                <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                <div class="col-lg-9 col-md-8">Bliss Legacy Limited</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Job</div>
-                <div class="col-lg-9 col-md-8">{{ user.role }}</div>
+                <div class="col-lg-9 col-md-8">{{ user.role.capitalize() }}</div>
               </div>
 
               <div class="row">
@@ -84,7 +84,13 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Phone</div>
-                <div class="col-lg-9 col-md-8">{{ user.phone_number }}</div>
+                <div class="col-lg-9 col-md-8">
+                  {% if user.phone_number %}
+                    {{ user.phone_number }}
+                  {% else %}
+                    +2349087534672
+                  {% endif %}
+                </div>
               </div>
 
               <div class="row">
@@ -97,7 +103,7 @@
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
               <!-- Profile Edit Form -->
-              <form>
+              <form method="POST" action="{{ url_for("user.update_profile") }}" enctype="multipart/form-data">
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                   <div class="col-md-8 col-lg-9">
@@ -162,14 +168,14 @@
                 <div class="row mb-3">
                   <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                    <input name="company" type="text" class="form-control" id="company" value="Bliss Legacy Limited" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="job" type="text" class="form-control" id="Job" value="{{ user.role.capitalize() }}">
+                    <input name="job" type="text" class="form-control" id="Job" value="{{ user.role.capitalize() }}" disabled>
                   </div>
                 </div>
 
@@ -190,7 +196,7 @@
                 <div class="row mb-3">
                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 29071" disabled>
+                    <input name="phone" type="text" class="form-control" id="Phone" value="+234 908 753 4672" disabled>
                   </div>
                 </div>
 
@@ -237,32 +243,48 @@
             </div>    
 
             <div class="tab-pane fade pt-3" id="profile-change-password">
+
               <!-- Change Password Form -->
-              <form>
+              <form
+                id="updatePasswordForm"
+                action="{{ url_for("user.update_user_password") }}" 
+                class="needs-validation" 
+                method="POST" 
+                novalidate
+              >
 
                 <div class="row mb-3">
                   <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="password" type="password" class="form-control" id="currentPassword">
+                    <input name="current_pwd" type="password" class="form-control" id="currentPassword" required>
+                    <div class="invalid-feedback">
+                      missing present password.
+                    </div>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="newpassword" type="password" class="form-control" id="newPassword">
+                    <input name="new_pwd" type="password" class="form-control" id="newPassword" required>
+                    <div class="invalid-feedback">
+                      enter new password.
+                    </div>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                    <input name="validate_pwd" type="password" class="form-control" id="confirmPassword" required>
+                    <div class="invalid-feedback">
+                      confirm new password.
+                    </div>
                   </div>
                 </div>
 
                 <div class="text-center">
-                  <button id="updatePassword" type="submit" class="btn btn-primary">Change Password</button>
+                  <button type="submit" class="btn btn-primary">Change Password</button>
                 </div>
               </form><!-- End Change Password Form -->
 
@@ -279,20 +301,11 @@
 {% endblock %}
 {% block specific_js %}
     <!-- your  js files per page-->
+    <script src="{{ url_for("static", filename="js/users/updatePasswordHandler.js") }}" type="module"></script>
     <script>
       document.getElementById("thrashPicture").addEventListener("click", (event) => {
         event.preventDefault();
         showNotification("Delete functionality not enabled yet", "info");
-      });
-
-      document.getElementById("updateProfile").addEventListener("click", (event) => {
-        event.preventDefault();
-        showNotification("Profile Update functionality not enabled yet", "info");
-      });
-
-      document.getElementById("updatePassword").addEventListener("click", (event) => {
-        event.preventDefault();
-        showNotification("Password Update functionality not enabled yet", "info");
       });
 
       document.getElementById("profileImageUpload").addEventListener("click", (event) => {

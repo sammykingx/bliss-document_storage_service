@@ -10,7 +10,7 @@ const USER_ENDPOINTS = {
     USER_PROFILE: '/profile', // user profile page
     USER_PROFILE_UPDATE: '/update_profile', // update user profile
     USER_PROFILE_IMAGE: '/update_profile_image', // update user profile image
-    USER_PROFILE_PASSWORD: '/update_profile_password', // update user password
+    USER_PROFILE_PASSWORD: '/update_user_password', // update logged in user password
 };
 
 const DOCUMENTS_ENDPOINTS = {

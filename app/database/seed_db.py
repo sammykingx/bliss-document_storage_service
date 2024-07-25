@@ -20,6 +20,8 @@ def generate_seed_data() -> list[dict[str]]:
                 "password": generate_password_hash(user_pwd),
                 "password_text": user_pwd,
                 "role": random.choice(roles),
+                "phone_number": fake.phone_number(),
+                "address": fake.address(),
                 "is_verified": False,
             }
         )
