@@ -235,6 +235,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Client</th>
                         <th scope="col">Document</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Branch</th>
                       </tr>
@@ -249,7 +250,8 @@
                                   {{ recent_upload.client.first_name.capitalize() }}
                                 </td>
                                 <td><a href="#" class="text-primary">{{ recent_upload.doc_category }}</a></td>
-                                <td>{{ recent_upload.upload_time.strftime("%B %d, %Y at %I:%M %p")}}</td>
+                                <td>{{ recent_upload.upload_time.strftime("%B %d, %Y")}}</td>
+                                <td>{{ recent_upload.upload_time.strftime("%I:%M %p")}}</td>
                                 <td><span class="badge bg-success">{{ recent_upload.client.branch.capitalize() }}</span></td>
                               </tr>
                           {% endfor %}

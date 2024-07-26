@@ -120,7 +120,7 @@ def upload_doc():
             str(uuid.uuid4()), 
             upload_file.filename.split(".")[-1],
         )
-                
+   
         file_id = "BLL-" + str(round(time.time()) * 2)
         document_object = {
             "file_id": file_id,
@@ -148,10 +148,10 @@ def upload_doc():
 
         # run the the upload to s3 on the bg
         upload_file.save(
-            os.path.join(current_app.config["UPLOAD_FOLDER"], new_file_name),
+            os.path.join(current_app.config["UPLOAD_FILE_FOLDER"], new_file_name),
             buffer_size= 250 * 1024,
         )
-        
+
         return jsonify(
             message="File upload successful",
             category="info",
@@ -171,7 +171,7 @@ def upload_doc():
 def download_document(file_name):
     
     return send_from_directory(
-        current_app.config["UPLOAD_FOLDER"],
+        current_app.config["UPLOAD_FILE_FOLDER"],
         file_name,
     )
     

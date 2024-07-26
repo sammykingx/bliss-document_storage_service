@@ -36,12 +36,13 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
     })
     .then(res => {
         if (!res.ok) {
-            showNotification("Unable to upload file", "warning");
-            return;
+          showNotification("Unable to upload file", "warning");
+          return;
         }
-        console.log("Upload succ");
         showNotification("File Upload Successful", "info");
-        document.getElementById("uploadDocument").reset();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
     })
     .catch(err => {
         showNotification(err, "error");

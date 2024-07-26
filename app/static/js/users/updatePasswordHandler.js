@@ -21,26 +21,25 @@ document.getElementById("updatePasswordForm").addEventListener("submit", (event)
     payload.append("validate_pwd", confirmPassword);
 
     fetch(USER_ENDPOINTS.USER_PROFILE_PASSWORD, {
-        method: "POST",
-        body: payload,
+      method: "PATCH",
+      body: payload,
     })
-
-    .then(res => {
+      .then((res) => {
         if (!res.ok) {
-            showNotification("Unexpected response from server", "warning");
-            return;
+          showNotification("Unexpected response from server", "warning");
+          return;
         }
 
         return res.json();
-    })
-    .then(data => {
+      })
+      .then((data) => {
         showNotification(data.message, data.category);
         if (data.category === "success") {
-            window.location.reload();
+          window.location.reload();
         }
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         showNotification(err, "error");
-    })
+      });
 
 });

@@ -8,8 +8,11 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).parent
 UPLOAD_DIR = os.path.join(BASE_DIR.parent, "uploads")
+UPLOAD_FILE_DIR = os.path.join(UPLOAD_DIR, "files")
+PROFILE_IMG_DIR = os.path.join(UPLOAD_DIR, "profile_img")
 
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(UPLOAD_FILE_DIR, exist_ok=True)
+os.makedirs(PROFILE_IMG_DIR, exist_ok=True)
 
 class DevelopmentConfig:
 
@@ -31,7 +34,8 @@ class DevelopmentConfig:
     
     # File uploads Config
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
-    UPLOAD_FOLDER = UPLOAD_DIR
+    UPLOAD_FILE_FOLDER = UPLOAD_FILE_DIR
+    UPLOAD_PROFILE_FOLDER = PROFILE_IMG_DIR
     ALLOWED_FILE_TYPES = (
         "application/msword",
         "application/pdf",

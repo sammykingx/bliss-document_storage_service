@@ -6,11 +6,12 @@ const AUTH_ENDPOINTS = {
 };
 
 const USER_ENDPOINTS = {
-    USER_DASHBOARD: '/dashboard', // user dashboard page
-    USER_PROFILE: '/profile', // user profile page
-    USER_PROFILE_UPDATE: '/update_profile', // update user profile
-    USER_PROFILE_IMAGE: '/update_profile_image', // update user profile image
-    USER_PROFILE_PASSWORD: '/update_user_password', // update logged in user password
+  USER_DASHBOARD: "/dashboard", // user dashboard page
+  USER_PROFILE: "/profile", // user profile page
+  USER_PROFILE_UPDATE: "/update_profile", // update user profile
+  USER_PROFILE_IMAGE: "/update_profile_image", // update user profile image
+  USER_PROFILE_PASSWORD: "/update_user_password", // update logged in user password
+  DELETE_PROFILE_IMAGE: "/delete_profile_image", // delete logged in user profile image
 };
 
 const DOCUMENTS_ENDPOINTS = {

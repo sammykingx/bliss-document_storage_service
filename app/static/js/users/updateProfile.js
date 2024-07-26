@@ -37,7 +37,7 @@ document.getElementById("updateProfile").addEventListener("submit", (event) => {
   payload.append("linkedin", linkedin);
 
   fetch(USER_ENDPOINTS.USER_PROFILE_UPDATE, {
-    method: "POST",
+    method: "PUT",
     body: payload,
   })
     .then((res) => {
@@ -47,7 +47,9 @@ document.getElementById("updateProfile").addEventListener("submit", (event) => {
       }
 
       showNotification("Profile Update successful", "success");
-      setTimeout(window.location.reload(), 5500);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     })
     .catch((err) => {
       showNotification(err, "error");
