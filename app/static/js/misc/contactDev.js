@@ -32,4 +32,7 @@ document
     formData.append("message", formMsg);
 
     showNotification("your message has been sent", "success");
+    setTimeout(() => {
+      window.location.reload();
+    }, 700);
   });
