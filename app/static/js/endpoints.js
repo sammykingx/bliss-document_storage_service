@@ -21,4 +21,13 @@ const DOCUMENTS_ENDPOINTS = {
     DOWNLOAD_DOCUMENTS: '/download_documents', // download document
 };
 
-export { AUTH_ENDPOINTS, USER_ENDPOINTS, DOCUMENTS_ENDPOINTS };
+const DEV_SUPPORT_ENDPOINTS = {
+  CONTACT_DEV_TEAM: "/dev_support", // contact dev team
+};
+
+export {
+  AUTH_ENDPOINTS,
+  USER_ENDPOINTS,
+  DOCUMENTS_ENDPOINTS,
+  DEV_SUPPORT_ENDPOINTS,
+};
