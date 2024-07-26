@@ -54,3 +54,14 @@ def document_filter_query(table: Table, search_input: str, doc_category:str, cli
 def fetch_recent_files(table: Table, limit: int=7) -> list[Row]:
     record = table.query.order_by(table.upload_time.desc()).limit(7).all()
     return record
+
+
+def update_record(table: Table, record_id: str, **data) -> Row:
+    record = table.query.get(record_id)
+    for key, value in data.items():
+        setattr(record, key, value)
+
+    db.session.commit()
+    db.session.refresh(record)
+
+    return record

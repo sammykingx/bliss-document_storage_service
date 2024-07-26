@@ -17,11 +17,11 @@ def generate_seed_data() -> list[dict[str]]:
             {
                 "name": fake.name(),
                 "email": fake.ascii_safe_email(),
+                "phone_number": fake.phone_number(),
                 "password": generate_password_hash(user_pwd),
                 "password_text": user_pwd,
-                "role": random.choice(roles),
-                "phone_number": fake.phone_number(),
                 "address": fake.address(),
+                "role": random.choice(roles),
                 "is_verified": False,
             }
         )

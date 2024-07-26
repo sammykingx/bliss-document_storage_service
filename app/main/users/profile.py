@@ -2,6 +2,8 @@ from flask import current_app, jsonify, request, render_template, url_for
 from flask_login import current_user, login_required
 from werkzeug.security import check_password_hash
 from app.auth import helpers
+from app.database import db_helpers
+from app.database.users import Users, SocialMedia
 from . import user_bp
 
 
@@ -14,7 +16,22 @@ def user_profile():
 @user_bp.route("/update_profile", methods=["POST"])
 @login_required
 def update_profile():
-    return "<h2>Update Profile</h2>"
+    """Updates user profile information"""
+
+    payload = dict(request.form)
+    user_about = payload.pop("about")
+    db_helpers.update_record(Users, current_user.email, about=user_about)
+    payload.update({"email": current_user.email})
+    if current_user.social_media:
+        db_helpers.update_record(SocialMedia, current_user.email, **payload)
+
+    else:
+        db_helpers.save_record(SocialMedia, **payload)
+
+    return jsonify(
+        message="Profile Update successful",
+        category="success",
+    )
 
 
 @user_bp.route("/update_profile_image")
@@ -26,21 +43,18 @@ def update_profile_image():
 @user_bp.route("/update_user_password", methods=["POST"])
 @login_required
 def update_user_password():
-    if request.method == "POST":
-        if not check_password_hash(
-            current_user.password,
-            request.form["current_pwd"]
-        ):
-            current_app.logger.info(f"user hasedpwd: {current_user.password}")
-            return jsonify(
-                message="You entered the wrong password",
-                category="info",
-            )
-            
-        helpers.update_password(current_user, request.form["new_pwd"])
+    if not check_password_hash(
+        current_user.password,
+        request.form["current_pwd"]
+    ):
         return jsonify(
-            message="Password Update successful",
-            category="success",
+            message="You entered the wrong password",
+            category="info",
         )
+            
+    helpers.update_password(current_user, request.form["new_pwd"])
         
-    return "<h2>Update Profile Password</h2>"
+    return jsonify(
+        message="Password Update successful",
+        category="success",
+    )
