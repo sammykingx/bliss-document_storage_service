@@ -242,7 +242,7 @@
                 <div class="row mb-3">
                   <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                   <div class="col-md-8 col-lg-9">
-                    {% if user.social_media[0].twitter %}
+                    {% if user.social_media %}
                       <input name="twitter" type="text" class="form-control" id="Twitter" value="{{ user.social_media[0].twitter }}">
                     {% else %}
                       <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
@@ -253,7 +253,7 @@
                 <div class="row mb-3">
                   <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
                   <div class="col-md-8 col-lg-9">
-                    {% if user.social_media[0].facebook %}
+                    {% if user.social_media %}
                       <input name="facebook" type="text" class="form-control" id="Facebook" value="{{ user.social_media[0].facebook }}">
                     {% else %}
                       <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
@@ -264,7 +264,7 @@
                 <div class="row mb-3">
                   <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
                   <div class="col-md-8 col-lg-9">
-                    {% if user.social_media[0].instagram %}
+                    {% if user.social_media %}
                       <input name="instagram" type="text" class="form-control" id="Instagram" value="{{ user.social_media[0].instagram }}">
                     {% else %}
                       <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
@@ -275,7 +275,7 @@
                 <div class="row mb-3">
                   <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
                   <div class="col-md-8 col-lg-9">
-                    {% if user.social_media[0].linkedin %}
+                    {% if user.social_media %}
                       <input name="linkedin" type="text" class="form-control" id="Linkedin" value="{{ user.social_media[0].linkedin }}">
                     {% else %}
                       <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
