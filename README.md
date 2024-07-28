@@ -43,7 +43,7 @@ git clone https://github.com/sammykingx/bliss-document_storage_service.git
 - Create Virtual environment:
 ```bash
 # for windows
-$ pytho -m venv venv
+$ python -m venv venv
 
 # for mac or debian based linux distro
 $ python3 -m venv venv
@@ -68,9 +68,14 @@ $ pip install -r requirements.txt
 
 - Create a `.env` file in the project root directory and provide values for the following variables:
 ```
-APP_SECRET_KEY = "your_app_key_here"
-SERIALIZER_KEY = "your_email_serializer_key"
+APP_SECRET_KEY = ""
+SERIALIZER_KEY = ""
 DB_URL = ""
+SMTP_HOST = ""
+SMTP_PORT = ""
+SMTP_MAIL = ""
+SMTP_PWD = ""
+USE_SSL = ""
 ```
 - Create a `.flaskenv` file and provide values for the following variables.
 ```bash
@@ -79,7 +84,7 @@ FLASK_DEBUG=
 ```
 
 - Run the application:
-```zsh
+```bash
 $ flask run
 ```
 
