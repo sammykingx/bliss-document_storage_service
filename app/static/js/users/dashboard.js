@@ -1,3 +1,4 @@
+// Reports Chart
 document.addEventListener("DOMContentLoaded", () => {
   new ApexCharts(document.querySelector("#reportsChart"), {
     series: [
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   }).render();
 
-  // Prepare the data for the chart
+  // Previous Storage chart
   const categories = [
     "Ihama",
     "Obakhavbaye",
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const values = [20, 25, 33, 18, 15, 12, 60];
 
-  // Render the pie chart
+  // Render the previous pie chart
   const options = {
     chart: {
       type: "pie",
@@ -107,4 +108,61 @@ document.addEventListener("DOMContentLoaded", () => {
     options
   );
   storageChart.render();
+
+  //  New Storage Chart
+  const ctx = document.getElementById("myPieChart").getContext("2d");
+  const myPieChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Obakhavbaye", "Ihama", "Ikeja", "Ajah", "Abeokuta", "Asaba"],
+      datasets: [
+        {
+          data: [10, 20, 30, 10, 20, 10], // Numbers corresponding to each section
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF",
+            "#FF9F40",
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF",
+            "#FF9F40",
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "top",
+        },
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              const value =
+                myPieChart.data.datasets[0].data[tooltipItem.dataIndex];
+              const total = myPieChart.data.datasets[0].data.reduce(function (
+                a,
+                b
+              ) {
+                return a + b;
+              },
+              0);
+              const percentage = Math.round((value / total) * 100);
+              return " (" + percentage + "%) Used";
+            },
+          },
+        },
+      },
+    },
+  });
+
+  // Bar chart
 });

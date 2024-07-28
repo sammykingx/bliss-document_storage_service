@@ -181,7 +181,7 @@
               <form id="updateProfile" class="form-control need-validation p-3" novalidate>
                 <div class="row mb-3">
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     <input name="fullName" type="text" class="form-control" id="fullName" value="{{ user.name }}" disabled>
                   </div>
                 </div>
@@ -199,21 +199,21 @@
 
                 <div class="row mb-3">
                   <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     <input name="company" type="text" class="form-control" id="company" value="Bliss Legacy Limited" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Job" class="col-md-4 col-lg-3 col-form-label">Role</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="job" type="text" class="form-control" id="Job" value="{{ user.role.capitalize() }}" disabled>
+                  <div class="col-md-7 col-lg-4">
+                    <input name="role" type="text" class="form-control" id="Job" value="{{ user.role.capitalize() }}" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     <input name="country" type="text" class="form-control" id="Country" value="Nigeria" disabled>
                   </div>
                 </div>
@@ -227,21 +227,21 @@
 
                 <div class="row mb-3">
                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     <input name="phone" type="text" class="form-control" id="Phone" value="{{ user.phone_number }}" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     <input name="email" type="email" class="form-control" id="Email" value={{ user.email }} disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     {% if user.social_media %}
                       <input name="twitter" type="text" class="form-control" id="Twitter" value="{{ user.social_media[0].twitter }}">
                     {% else %}
@@ -252,7 +252,7 @@
 
                 <div class="row mb-3">
                   <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     {% if user.social_media %}
                       <input name="facebook" type="text" class="form-control" id="Facebook" value="{{ user.social_media[0].facebook }}">
                     {% else %}
@@ -263,7 +263,7 @@
 
                 <div class="row mb-3">
                   <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     {% if user.social_media %}
                       <input name="instagram" type="text" class="form-control" id="Instagram" value="{{ user.social_media[0].instagram }}">
                     {% else %}
@@ -274,7 +274,7 @@
 
                 <div class="row mb-3">
                   <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-7 col-lg-4">
                     {% if user.social_media %}
                       <input name="linkedin" type="text" class="form-control" id="Linkedin" value="{{ user.social_media[0].linkedin }}">
                     {% else %}
@@ -303,7 +303,7 @@
 
                 <div class="row mb-3">
                   <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-4">
                     <input name="current_pwd" type="password" class="form-control" id="currentPassword" required>
                     <div class="invalid-feedback">
                       missing present password.
@@ -313,7 +313,7 @@
 
                 <div class="row mb-3">
                   <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-4">
                     <input name="new_pwd" type="password" class="form-control" id="newPassword" required>
                     <div class="invalid-feedback">
                       enter new password.
@@ -323,7 +323,7 @@
 
                 <div class="row mb-3">
                   <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-4">
                     <input name="validate_pwd" type="password" class="form-control" id="confirmPassword" required>
                     <div class="invalid-feedback">
                       confirm new password.

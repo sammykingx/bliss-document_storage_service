@@ -3,11 +3,12 @@ from flask import (
     current_app,
     jsonify,
     request,
+    redirect,
     render_template,
     send_from_directory,
+    url_for,
 )
 from flask_login import current_user, login_required
-from werkzeug.utils import secure_filename
 from app.database.users import Clients
 from app.database.documents import Documents
 from app.database import db_helpers
@@ -36,6 +37,8 @@ ALL_BRANCHES = (
 @bp.route("/all_documents", methods=["GET", "POST"])
 @login_required
 def fetch_all_docs():
+    """Returns all documents in the database"""
+
     if request.method == "POST":
         search_data = dict(request.form)
         current_app.logger.info(f"search data: {search_data}")
@@ -59,7 +62,11 @@ def fetch_all_docs():
         )
     
     # for get request
-    all_docs = db_helpers.fetch_records(Documents)
+    all_docs = db_helpers.fetch_records(
+        Documents,
+        is_deleted=False,
+        is_thrashed=False,
+    )
 
     
     return render_template(
@@ -102,6 +109,25 @@ def fetch_all_docs():
     '''
 
 
+@bp.route("/thrashed_documents")
+@login_required
+def fetch_thrashed_docs():
+    """returns thrashed documents"""
+
+    thrashed_docs = db_helpers.fetch_records(
+        Documents,
+        is_thrashed=True,
+        is_deleted=False,
+    )
+    
+    return render_template(
+        "files/thrashed_documents.html",
+        branches = ALL_BRANCHES,
+        doc_category = DOCUMENTS_CATEGORY,
+        thrashed_documents = thrashed_docs,
+        user = current_user,
+    )
+
 
 @bp.route("/upload_documents", methods=["GET", "POST"])
 @login_required
@@ -126,14 +152,14 @@ def upload_doc():
             "file_id": file_id,
             "doc_id": str(uuid.uuid4()),
             "doc_category": client_data["docCategory"],
-            "file_name": new_file_name, #secure_filename(upload_file.filename),
+            "file_name": new_file_name,
             "client_id": client_data["clientEmail"],
             "uploaded_by": current_user.name,
             "upload_time": datetime.utcnow(),
         }
         
         file_id = db_helpers.save_record(Documents, **document_object)
-        registerd = db_helpers.fetch_records(Clients, email=client_data["clientEmail"])
+        registerd = db_helpers.fetch_record(Clients, record_id=client_data["clientEmail"])
         if not registerd:
             client_object = {
                 "first_name": client_data["firstName"],
@@ -176,8 +202,57 @@ def download_document(file_name):
     )
     
 
-
-@bp.route("/delete_documents")
+@bp.route("/thrash_document/<file_id>")
 @login_required
-def delete_document():
-    return "<h2>Delete Document</h2>"
+def thrash_document(file_id):
+    """Updates document status to thrash in database"""
+
+    
+    db_helpers.update_record(
+        Documents,
+        file_id,
+        is_thrashed=True,
+        thrashed_time=datetime.utcnow(),
+        thrashed_by=current_user.name,
+    )
+
+    return redirect(url_for("documents.fetch_all_docs"))
+
+
+
+@bp.route("/restore_thrash/<file_id>")
+@login_required
+def restore_thrashed_document(file_id):
+    """Updates is_thrashed document status to false in database"""
+
+    
+    db_helpers.update_record(
+        Documents,
+        file_id,
+        is_thrashed=False,
+        is_restored=True,
+        restored_by=current_user.name,
+    )
+
+    current_app.logger.info(f"document id: {file_id} was restored")
+
+    return redirect(url_for("documents.fetch_thrashed_docs"))
+
+
+@bp.route("/delete_document/<file_id>", methods=["PATCH"])
+@login_required
+def delete_document(file_id):
+    """Deletes a document from the database"""
+
+    db_helpers.update_record(
+        Documents,
+        file_id,
+        is_deleted=True,
+        deleted_time=datetime.utcnow(),
+        deleted_by=current_user.name,
+    )
+
+    return jsonify(
+        message="Document deleted successfully",
+        category="success",
+    )

@@ -117,5 +117,9 @@ document.getElementById("searchForm").addEventListener("submit", event => {
 */
 
 document.addEventListener("DOMContentLoaded", () => {
-    showNotification("All files loaded Succesffully", "info");
+  showNotification("All files loaded Succesffully", "info");
+});
+
+document.getElementById("deleteDoc").addEventListener("click", () => {
+  showNotification("Delete Functionality not enabled by dev", "info");
 });

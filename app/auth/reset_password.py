@@ -1,11 +1,8 @@
 from flask import (
     current_app,
-    flash,
     jsonify,
-    redirect,
     render_template,
     request,
-    session,
     url_for,
 )
 from werkzeug.security import generate_password_hash
@@ -34,10 +31,12 @@ def reset_password():
                 category="error",
             ), 400
             
-        user_record = db_helpers.fetch_records(Users, email=token_data["data"])
-        helpers.update_password(user_record, form_data["password"])
+        db_helpers.update_record(
+            Users,
+            record_id=token_data["data"],
+            password=generate_password_hash(form_data["password"]),
+        )
     
-        current_app.logger.info(f"User password changed: {user_record.email}")
         return jsonify(
             message="Password reset successful",
             category="success",

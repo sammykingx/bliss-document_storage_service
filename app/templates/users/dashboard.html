@@ -10,7 +10,7 @@
 {% block menu_title %} Dashboard {% endblock %}
 {% block page_body %}
 <!-- body content -->
-  <section class="section dashboard m-3">
+  <section class="section dashboard ms-3">
     <div class="row">
       <div class="row">
 
@@ -211,28 +211,32 @@
                             <td>Bridie Kessler</td>
                             <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
                             <td>$47</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td>3:00pm</td>
+                            <td><span class="badge bg-warning">Ajah</span></td>
                           </tr>
                           <tr>
                             <th scope="row"><a href="#">#2049</a></th>
                             <td>Ashleigh Langosh</td>
                             <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
                             <td>$147</td>
-                            <td><span class="badge bg-success">Approved</span></td>
+                            <td>2:45pm</td>
+                            <td><span class="badge bg-success">Ikeja</span></td>
                           </tr>
                           <tr>
                             <th scope="row"><a href="#">#2644</a></th>
                             <td>Angus Grady</td>
                             <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
                             <td>$67</td>
-                            <td><span class="badge bg-danger">Rejected</span></td>
+                            <td>10:45am</td>
+                            <td><span class="badge bg-danger">Asaba</span></td>
                           </tr>
                           <tr>
                             <th scope="row"><a href="#">#2644</a></th>
                             <td>Raheem Lehner</td>
                             <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
                             <td>$165</td>
-                            <td><span class="badge bg-success">Approved</span></td>
+                            <td>4:30pm</td>
+                            <td><span class="badge bg-success">Ihama</span></td>
                           </tr>
                       {% endif %}
                     </tbody>
@@ -241,8 +245,10 @@
                 </div>
 
               </div>
-            </div><!-- End Recent Sales -->
+            </div>
+            <!-- End Recent Sales -->
             
+            <!-- Bar Chart -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
 
@@ -258,73 +264,19 @@
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
-
-                
                 <div class="card-body">
-                  <h5 class="card-title">Bar chart <span>| Today</span></h5>
-
+                  <h5 class="card-title">
+                    Bar chart <span>| This Week</span>
+                  </h5>
                   <div class="chart-container">
                     <canvas id="myBarChart"></canvas>
+                  </div>
+                  
+                  
+                  
                 </div>
-            
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-                <script>
-                    var ctx = document.getElementById('myBarChart').getContext('2d');
-            
-                    var data = {
-                        labels: ['Obakhavbaye', 'Ihama', 'Ikeja', 'Ajah', 'Abeokuta', 'Asaba'],
-                        datasets: [{
-                            label: 'Metrics',
-                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
-                            data: [500, 800, 300, 900, 600, 1000] // Numbers corresponding to each section
-                        }]
-                    };
-            
-                    var options = {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false // Hide the legend since we only have one dataset
-                            },
-                            datalabels: {
-                                color: 'white',
-                                anchor: 'end',
-                                align: 'start',
-                                offset: -10,
-                                font: {
-                                    weight: 'bold',
-                                    size: 12
-                                },
-                                formatter: function(value) {
-                                    return value + ' units';
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 1000,
-                                ticks: {
-                                    stepSize: 100
-                                }
-                            }
-                        }
-                    };
-            
-                    Chart.register(ChartDataLabels); // Register the datalabels plugin
-            
-                    var myBarChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: data,
-                        options: options
-                    });
-                </script>
-                </div>
-
               </div>
-            </div><!-- End Recent Sales -->
+            </div><!-- End Bar Chart -->
             
             
             <!-- Top Selling -->
@@ -400,10 +352,12 @@
                 </div>
 
               </div>
-            </div><!-- End Top Selling -->
+            </div>
+            <!-- End Top Selling -->
 
           </div>
-        </div><!-- End Left side columns -->
+        </div>
+        <!-- End Left side columns -->
 
         <!-- Right side columns -->
         <div class="col-lg-4">
@@ -417,14 +371,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Week</a></li>
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Recent Request <span>| Today</span></h5>
+              <h5 class="card-title">Recent Request <span>| This Week</span></h5>
 
               <div class="activity">
 
@@ -432,31 +386,32 @@
                   <div class="activite-label">32 min</div>
                   <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                   <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                    New Document Upload by <a href="#" class="fw-bold text-dark">Antonio Stewart</a>
                   </div>
                 </div><!-- End activity item-->
 
                 <div class="activity-item d-flex">
                   <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                   <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
+                    New Document Upload by <a href="#" class="fw-bold text-dark">Christopher Brown</a>
                   </div>
                 </div><!-- End activity item-->
 
                 <div class="activity-item d-flex">
                   <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                   <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
+                    New Document Upload by <a href="#" class="fw-bold text-dark">Raymond Mason</a>
                   </div>
                 </div><!-- End activity item-->
 
                 <div class="activity-item d-flex">
                   <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
                   <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                    <a href="#" class="fw-bold text-dark">Raymond Mason</a> Thrashed 
+                    <a href="#" class="fw-bold text-dark">Adewole David's</a> document.
                   </div>
                 </div><!-- End activity item-->
 
@@ -464,26 +419,35 @@
 
                 <div class="activity-item d-flex">
                   <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
                   <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
+                    Brendan Howells has <a href="#" class="fw-bold text-dark">deleted</a> a document. 
+                  </div>
+                </div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">3 days</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Sherri Grady has <a href="#" class="fw-bold text-dark">restored</a> a document.
                   </div>
                 </div><!-- End activity item-->
 
                 <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
+                  <div class="activite-label">4 days</div>
                   <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
                   <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                    Benjamin Tran has <a href="#" class="fw-bold text-dark">changed</a> a client documnet email.
                   </div>
                 </div><!-- End activity item-->
 
               </div>
 
             </div>
-          </div><!-- End Recent Activity -->
-           <!-- Recent Activity -->
-           <div class="card">
+          </div>
+          <!-- End Recent Activity -->
+           
+          <!-- Storage By Branch -->
+          <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -491,56 +455,26 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">overall</a></li>
+                <!--
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
+                -->
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Pie Chart <span>| Today</span></h5>
+              <h5 class="card-title">Storage By Branch <span>| overall</span></h5>
 
               <div class="activity">
 
                 <div class="chart-container">
                   <canvas id="myPieChart"></canvas>
-              </div>
-          
-              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-              <script>
-                  var ctx = document.getElementById('myPieChart').getContext('2d');
-                  var myPieChart = new Chart(ctx, {
-                      type: 'pie',
-                      data: {
-                          labels: ['Obakhavbaye', 'Ihama', 'Ikeja', 'Ajah', 'Abeokuta', 'Asaba'],
-                          datasets: [{
-                              data: [10, 20, 30, 10, 20, 10], // Numbers corresponding to each section
-                              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
-                          }]
-                      },
-                      options: {
-                          responsive: true,
-                          plugins: {
-                              legend: {
-                                  position: 'top',
-                              },
-                              tooltip: {
-                                  callbacks: {
-                                      label: function(tooltipItem) {
-                                          var value = myPieChart.data.datasets[0].data[tooltipItem.dataIndex];
-                                          var total = myPieChart.data.datasets[0].data.reduce(function(a, b) { return a + b; }, 0);
-                                          var percentage = Math.round((value / total) * 100);
-                                          return value + ' (' + percentage + '%)';
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                  });
-              </script>
+                </div>
 
-               
-                </div><!-- End activity item-->
+              </div>
+            </div>
+          </div><!-- End activity item-->
 
                 
 
@@ -552,6 +486,12 @@
 {% endblock %}
 {% block specific_js %}
     <!-- your  js files per page-->
+    
     <script src={{ url_for("static", filename="vendors/apexcharts/apexcharts.min.js") }}></script>
+    <script src={{ url_for("static", filename="vendors/chart.js/chart.umd.js") }}></script>
     <script src={{ url_for("static", filename="js/users/dashboard.js") }}></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+  <script src={{ url_for("static", filename="js/users/barchart.js") }}></script>
  {% endblock %}

@@ -19,9 +19,9 @@ from app.main import users
 def user_checkpoint():
     if request.method == "POST":
         user_data = dict(request.form)
-        user_record = db_helpers.fetch_records(
+        user_record = db_helpers.fetch_record(
             Users,
-            email=user_data.get("email", None)
+            record_id=user_data.get("email", None)
         )
 
         if not user_record:

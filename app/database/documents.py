@@ -18,15 +18,21 @@ class Documents(db.Model):
     upload_time = db.Column(db.DateTime)
     uploaded_by = db.Column(db.String(50))
     file_url = db.Column(db.String(100))
+    is_thrashed = db.Column(db.Boolean, default=False)
+    thrashed_by = db.Column(db.String(50))
+    thrashed_time = db.Column(db.DateTime)
+    is_deleted = db.Column(db.Boolean, default=False)
+    deleted_by = db.Column(db.String(50))
+    deleted_time = db.Column(db.DateTime)
+    is_restored = db.Column(db.Boolean, default=False)
+    restored_by = db.Column(db.String(50))
     client = relationship("Clients", back_populates="documents")
 
     
     def __str__(self):
-        return {
-            "doc_id": self.doc_id,
-            "doc_category": self.doc_category,
-            "file_name": self.file_name,
-            "client_id": self.client_id,
-            "client_branch": self.client_branch,
-            "url": self.file_url,
-        }
+        return f"(file_id: {self.file_id}, " \
+            f"doc_id: {self.doc_id}, " \
+            f"doc_category: {self.doc_category}, " \
+            f"file_name: {self.file_name}, " \
+            f"client_id: {self.client_id}, " \
+            f"url: {self.file_url},)"

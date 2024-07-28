@@ -1,0 +1,106 @@
+{% extends "site_layout/demo_layout.html" %}
+
+{% block title %}User Documents{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href={{ url_for("static", filename="css/components/document_dropdown.css") }}>
+{% endblock %}
+
+{% block menu_title%} Thrashed Documents {% endblock %}
+{% block page_body %}
+<section>
+    <div class="card ms-3 me-3">
+        <div class="card-body">
+        <h5 class="card-title">Showing All Thrashed Documents</h5>
+
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Document</th>
+                <th scope="col">Client</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Thrashed By</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% if thrashed_documents %}
+                    {% for doc in thrashed_documents %}
+                        <tr>
+                            <th scope="row">{{ thrashed_documents.index(doc) + 1}}</th>
+                            <td>
+                                <a href="{{ url_for('documents.download_document', file_name=doc.file_name) }}" class="text-decoration-none text-dark">
+                                    {{ doc.doc_category.title() }}
+                                </a>
+                                <h6 class="text-success">upload time: {{ doc.upload_time.strftime('%b %d, %I:%M %p') }}</h6>
+                                <!--<h6 class="text-success">upload time:<span class="badge border-info border-1 text-success">{{ doc.upload_time.strftime('%B %d, at %I:%M %p') }}</span></h6>-->
+                            </td>
+                            <td>
+                                {{ doc.client.last_name }} {{ doc.client.first_name }}
+                                <h6 class="text-primary">email: {{ doc.client_id }}</h6>
+                                <!--<h6>email:<span class="badge text-info">{{ doc.client_id }}</span></h6>-->
+                            </td>
+                            <td>{{ doc.client.branch.capitalize() }}</td>
+                            <td>{{ doc.thrashed_by.capitalize() }}
+                                <h6 class="text-danger">thrash time: {{ doc.thrashed_time.strftime('%b %d, %I:%M %p') }}</h6>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-warning btn-sm" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                            <a class="dropdown-item" href="#">File Details</a>
+                                        </li>
+
+                                        {% if doc.file_name.split(".")[-1] == "pdf" %}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url_for('documents.download_document', file_name=doc.file_name) }}">View</a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url_for('documents.download_document', file_name=doc.file_name) }}" target="blanck">Download</a>
+                                            </li>
+                                        {% endif %}
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-success" href="{{ url_for('documents.restore_thrashed_document', file_id=doc.file_id)}}">Restore</a></li>
+                                        <li id="deleteDoc"><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+
+                                <!--
+                                <button class="btn btn-warning">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button> -->
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Deed Of Transfer</td>
+                        <td>Bridie Kessler</td>
+                        <td>Obakhavbaye</td>
+                        <td>Scott Maddissoon</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block specific_js %}
+    <script src={{ url_for("static", filename="js/documents/documentHandler.js") }} type="module" defer></script>
+{% endblock %}

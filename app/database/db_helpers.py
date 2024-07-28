@@ -11,12 +11,23 @@ def fetch_records(table: Table, **kwargs) -> Row:
         Keyword arguments to filter table records
     """
     if kwargs:
-        records = table.query.filter_by(**kwargs).first()
+        records = table.query.filter_by(**kwargs).all()
         
     else:
         records = table.query.all()
     
     return records
+
+def fetch_record(table: Table, record_id: str) -> Row:
+    """Queries database table to get a single record
+    :table:
+        The database table to query
+        
+    :record_id:
+        The id of the record to get
+    """
+    record = table.query.get(record_id)
+    return record
    
 
 def save_record(table: Table, **data) -> Row:
