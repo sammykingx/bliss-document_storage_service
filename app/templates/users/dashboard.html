@@ -178,7 +178,7 @@
                 
                 <div class="card-body">
                   <h5 class="card-title">Recent Uploads <span>| This Week</span></h5>
-
+<!-- 
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
@@ -190,7 +190,7 @@
                         <th scope="col">Branch</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                       {% if recent_uploads %}
                           {% for recent_upload in recent_uploads %}
                               <tr>
@@ -241,11 +241,97 @@
                       {% endif %}
                     </tbody>
                   </table>
+                  <h5 class="card-title">Table with stripped rows</h5> -->
 
+                  <!-- Table with stripped rows -->
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Document</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Branch</th>
+                        <!-- <th scope="col">Branch</th> -->
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% if recent_uploads %}
+                        {% for recent_upload in recent_uploads %}
+                          <tr>
+                            <th scope="row"><a href="#">{{ recent_upload.file_id }}</a></th>
+                            <td>
+                              {{ recent_upload.client.last_name.capitalize() }}
+                              {{ recent_upload.client.first_name.capitalize() }}
+                            </td>
+                            <td><a href="#" class="text-primary">{{ recent_upload.doc_category }}</a></td>
+                            <td>{{ recent_upload.upload_time.strftime("%B %d, %Y")}}</td>
+                            <td>{{ recent_upload.upload_time.strftime("%I:%M %p")}}</td>
+                            <td><span class="badge bg-success">{{ recent_upload.client.branch.capitalize() }}</span></td>
+                          </tr>
+                        {% endfor %}
+                      {% else %}
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Brandon Jacob</td>
+                          <td>Designer</td>
+                          <td>28</td>
+                          <td>2016-05-25</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Bridie Kessler</td>
+                          <td>Developer</td>
+                          <td>35</td>
+                          <td>2014-12-05</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Ashleigh Langosh</td>
+                          <td>Finance</td>
+                          <td>45</td>
+                          <td>2011-08-12</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Angus Grady</td>
+                          <td>HR</td>
+                          <td>34</td>
+                          <td>2012-06-11</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>Raheem Lehner</td>
+                          <td>Dynamic Division Officer</td>
+                          <td>47</td>
+                          <td>2011-04-19</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>Raheem Lehner</td>
+                          <td>Dynamic Division Officer</td>
+                          <td>47</td>
+                          <td>2011-04-19</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>Raheem Lehner</td>
+                          <td>Dynamic Division Officer</td>
+                          <td>47</td>
+                          <td>2011-04-19</td>
+                        </tr>
+                      {% endif %}
+                    </tbody>
+                  </table>
                 </div>
 
               </div>
+              
             </div>
+            
             <!-- End Recent Sales -->
             
             <!-- Bar Chart -->
@@ -493,5 +579,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
-  <script src={{ url_for("static", filename="js/users/barchart.js") }}></script>
+    <script src={{ url_for("static", filename="js/users/barchart.js") }}></script>
  {% endblock %}

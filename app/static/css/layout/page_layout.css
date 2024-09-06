@@ -1,13 +1,6 @@
-/**
-* Template Name: NiceAdmin
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Updated: Apr 20 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
-# General
+# General Project CSS
 --------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
@@ -758,11 +751,11 @@ h6 {
 /* storage bar*/
 .storage-board {
   width: 200px;
-  color: #f6f6fe;
-  background-color: #012970;
+  color: #012970;
+  background-color: white;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(8, 8, 8, 0.342);
   text-align: center;
   margin-top: 50%;
   min-height: 12rem;
@@ -773,10 +766,13 @@ h6 {
   
   
 }
+.storage-board h4 {
+font-weight: bolder;
+}
 .storage-bar {
   width: 100%;
   height: 30px;
-  background-color: #22e710;
+  background-color: #2eca6a;
   border-radius: 4px;
   overflow: hidden;
   margin-bottom:  30px;
@@ -785,7 +781,7 @@ h6 {
 }
 .used-storage {
   height: 100%;
-  background-color: #f5190a;
+  background-color: #dc3545;
   transition: width 0.3s;
 }
 .storage-info p {
@@ -1106,3 +1102,4 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
