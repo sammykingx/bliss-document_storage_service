@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}User Documets{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href={{ url_for("static", filename="css/documents.css") }}>
+{% endblock %}
+
+{% block body %}
+ <div class="main-content">
+    <h2>My Documents</h2>
+    <form id="searchForm" method="POST">
+        <input type="text" id="searchInput" name="search_input" placeholder="Search documents...">
+        <select id="categoryFilter" name="doc_category">
+            <option value="">By Category</option>
+            {% for category in doc_category %}
+                <option value="{{ category.title() }}">{{ category.title() }}</option>
+            {% endfor %}
+        </select>
+        <select id="clientBranch" name="client_branch">
+        <!-- -->
+            <option value="">By Branch</option>
+                {% for branch in branches %}
+                    <option value="{{ branch.title() }}">{{ branch.title() }}</option>
+                {% endfor %}
+        
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    <div class="documents-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>docID</th>
+                    <th>clientEmail</th>
+                    <th>docType</th>
+                    <th>Branch</th>
+                    <th>Uploaded By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Document rows will be inserted here -->
+                {% if all_documents %}
+                    {% for document in all_documents %}
+                        <tr>
+                            <td>{{ document.file_id }}</td>
+                            <td>{{ document.client_id }}</td>
+                            <td>{{ document.doc_category }}</td>
+                            <td>{{ document.client_branch }}</td>
+                            <td>{{ document.uploaded_by }}</td>
+                            <td>
+                                {% if document.file_name.split(".")[-1] == "pdf" %}
+                                    <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">view</a>
+                                
+                                {% else %}
+                                    <a href={{ url_for("documents.download_document", file_name=document.file_name) }} class="btn">download</a>
+                                
+                                {% endif %}
+
+                                {% if user.role in ("admin", "compliance") %}
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                {% endif %}
+                            </td>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>BLL-1234567</td>
+                        <td>email@example.com</td>
+                        <td>Deed Of Transfer</td>
+                        <td>Branch</td>
+                        <td>John Doe</td>
+                        <td>
+                            <a href="#" class="btn">download</a>
+                            <a href="#" class="btn">view</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endif %}
+                <!-- Additional document rows can go here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_scripts %}
+    <script src={{ url_for("static", filename="js/documents/documentHandler.js") }} type="module" defer></script>
+{% endblock %}

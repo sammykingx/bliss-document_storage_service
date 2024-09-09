@@ -1,0 +1,20 @@
+{% extends "site_layout/demo_layout.html" %}
+
+{% block title %}Page title{% endblock %}
+
+{% block css_styles %}
+    <!-- your css styles per page -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/#") }}>
+{% endblock %}
+
+{% block menu_title %} {% endblock %}
+{% block page_body %}
+    <!-- body content -->
+
+{% endblock %}
+<!-- your js script tag-->
+ 
+ {% block specific_js %}
+    <!-- your  js files per page-->
+    <script src={{ url_for("static", filename="js/#") }}></script>
+ {% endblock %}

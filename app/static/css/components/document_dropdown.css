@@ -1,0 +1,10 @@
+/* Dropdown button */
+.dropdown button {
+    margin-left: 5px;
+    padding: 5px 8px;
+}
+
+/* Dropdown button icon */
+.dropdown button i {
+    color: white;
+}

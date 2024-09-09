@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.parallax-content {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+.banner-content {
+	width: 100%;
+  	padding-top: 35vh;
+  	text-align: center;
+  	background-image: url(../images/saas-concept-collage.jpg);
+  	vertical-align: middle;
+}
+
+.banner-content .text-content {
+	text-align: center;
+}
+
+.banner-content .text-content h2 {
+	font-size: 36px;
+	font-weight: 400;
+	color: #fff;
+}
+
+.banner-content .text-content h2 span {
+	font-weight: 700;
+	color: #33c1cf!important;
+}
+
+.banner-content .text-content h2 em {
+	font-style: normal;
+	font-weight: 700;
+	color: #f89624!important;
+}
+
+.banner-content .text-content p {
+	color: #fff;
+	font-size: 14px;
+	line-height: 24px;
+	padding: 0px 25%;
+}
+
+.banner-content .text-content .primary-white-button {
+	margin-top: 25px;
+}
+
+/* Responsive */
+@media (max-width: 991px){
+
+	.banner-content .text-content p {
+		padding: 0px 15%;
+	}
+}
+
+@media (max-width: 768px){
+	.banner-content .text-content p {
+		padding: 0px 10%;
+	}
+}

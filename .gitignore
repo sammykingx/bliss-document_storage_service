@@ -1,0 +1,6 @@
+__pycache__/
+instance/
+uploads/
+venv/
+*.json
+.env

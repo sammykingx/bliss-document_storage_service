@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href={{ url_for("static", filename="css/profiles.css") }}>
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+  
+  <h2>My Profile</h2>
+    <!-- the content-->
+    
+  <div class="container">
+    <div class="heading">
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.role.capitalize() }}</p>
+    </div>
+    <div class="content">
+      <div class="info">
+
+        <div class="details">
+        <h4>Information</h4>
+       </div>
+         <hr>
+        <div class="mail">
+           <h5>E-mail</h5>
+          <p>{{ user.email }}</p>
+        </div>
+        
+
+        <div class="phone">
+           <h5>Phone</h5>
+          <p>070112200000</p>
+        </div>
+      <hr>
+        <div class="address">
+           <h5>Address</h5>
+          <p>20 Downing street, london.</p>
+        </div>
+      
+        <div class="last-login">
+           <h5>Last Seen</h5>
+          <p>2 hrs ago</p>
+        </div>
+        <hr>
+        <div class="recent">
+           <h5>Activity</h5>
+          <p>viewed 20 documents</p>
+        </div>
+        
+    </div>
+</div>
+<!-- the content
+<div class="outer-container">
+  <div class="inner-top"></div>
+  <div class="inner-bottom"></div>
+</div>
+</div>
+
+</div>
+-->
+{% endblock %}
+<!--your js script tag-->

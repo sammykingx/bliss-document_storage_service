@@ -1,0 +1,69 @@
+{% extends "site_layout/demo_layout.html" %}
+
+{% block title %}Developer Support{% endblock %}
+
+{% block css_styles %}
+    <!-- your css styles per page -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/misc/contact_form.css") }}>
+{% endblock %}
+
+{% block page_body %}
+    <!-- body content -->
+     <h2 class="text-center mb-4"> Contact Dev Team</h2>
+     <div class="col-lg-6 col-md-9 mx-auto">
+          <div class="card p-4">
+            <form 
+              action="#" 
+              id="contactDevTeam" 
+              method="post" 
+              class="needs-validation contact-form"
+              novalidate
+            >
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input id="userEmail" type="text" name="name" class="form-control" value="{{ user.name }}" placeholder="Your Name" disabled>
+                </div>
+
+                <div class="col-md-6 ">
+                  <input id="formEmail" type="email" class="form-control" name="email" value="{{ user.email }}" disabled>
+                </div>
+
+                <div class="col-md-12">
+                  <input id="formSubject" type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <div class="invalid-feedback">
+                    Kindly enter a valid subject.
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <textarea id="formMsg" class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <div class="invalid-feedback">
+                    Kindly enter your message.
+                  </div>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <!-- -->
+                </div>
+                <div class="tex-center">
+                  <button type="submit">Send Message <i class="bi bi-mailbox"></i></button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+{% endblock %}
+<!-- your js script tag-->
+ 
+ {% block specific_js %}
+    <!-- your  js files per page-->
+    <script src={{ url_for("static", filename="js/misc/contactDev.js") }} type="module"></script>
+ {% endblock %}

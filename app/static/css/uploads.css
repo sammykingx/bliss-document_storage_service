@@ -1,0 +1,37 @@
+/*.form{
+    width:1000px;
+    position: absolute;
+    float: center;
+    height:auto;
+    border: 5px;
+    margin-left: 10%;
+    margin-right: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.form h1{
+    padding-bottom: 2%;
+}
+    */
+.col-12 .btn{
+    background-color: #478778;
+    width: 45%;
+    margin-right: auto;
+    margin-left: 0;
+    font-weight: bolder;
+
+}
+.col-12 .btn a:hover {
+    background-color: #B9E3C6;
+
+}
+.btn:last-child{
+    position: relative;
+    float: right;
+    margin-right:0;
+    padding-right: 0;
+    background-color: red;
+    }
+
+/* Responsive Design */

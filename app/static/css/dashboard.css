@@ -1,0 +1,179 @@
+.container2 {
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border:1px solid gray;
+    margin-top: 10%;
+}
+
+
+.container {
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border:1px solid gray;
+}
+.heading {
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 20px;
+    background-color:#478778;
+}
+.content {
+    font-size: 16px;
+    color: #333;
+    padding:20px;
+}
+.card {
+    z-index: 1;
+    display:flex;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+    padding: 1.5rem;
+    margin-bottom: 5.5rem;
+    margin-top: 3rem;
+    height: 12rem;
+    background-image:
+   linear-gradient(to left, rgba(245, 246, 252, 0.12), #478778),
+   url('../images/cloud.png');
+   background-repeat: no-repeat;
+   background-size: contain ;
+   background-position: right;
+   border-color: gray;
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color:black;
+
+
+}
+
+.card .btn {
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 0;
+    float: left;
+    width: 9rem;
+    font-weight: bold;
+}
+
+.card .btn:hover {
+    background-color: #478778;
+}
+
+
+/* documents by branches section*/
+.branch-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    
+    
+}
+/*
+.branch-cards :last-child{
+	margin-right: 0%;
+	padding-right: 0%;
+}
+*/
+.branch-card {
+    background-color: #96DED1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(10.333% - 1rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents overflow content */
+    word-wrap: break-word; /* Breaks long words */
+    margin: 0 auto;
+    min-width: 10rem;
+}
+
+.branch-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.branch-card p {
+    font-size: 1rem;
+}
+
+.branch-card:hover {
+    background-color: #478778;
+    color: white;
+}
+/* Recent uploads Statistics Cards Styling */
+.stats-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.stats-card {
+    background-color: #96DED1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(10.833% - 1rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s;
+    min-width: 8rem;
+    margin: auto;
+
+   
+}
+
+.stats-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    
+}
+
+.stats-card p {
+    font-size: 1rem;
+}
+
+.stats-card:hover {
+    background-color: #478778;
+    color: white;
+}
+
+
+/* responsive section*/
+
+@media (max-width: 768px) {
+    .stats-card {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-card {
+        width: 100%;
+    }
+}

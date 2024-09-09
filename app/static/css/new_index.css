@@ -1,0 +1,69 @@
+/********** common setting **********/
+
+
+
+a,
+button {
+    cursor: pointer;
+}
+/**** Particles ****/
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #282c34; /* Fallback background color */
+    z-index: -1; /* Ensure particles are behind the content */
+}
+
+
+.jumbotron {
+    margin-bottom: 0 !important;
+}
+
+#banner {
+    background-size: cover;
+}
+
+/********** banner **********/
+#banner header {
+    overflow: hidden;
+}
+
+#banner header img {
+    max-width: 80px;
+}
+
+/********** copyright **********/
+#copyright {
+    background: #192440;
+    padding: 2rem 3rem;
+}
+
+#copyright #social-media a {
+    width: 40px;
+    height: 40px;
+    border-radius: 99%;
+    background: #ffffff;
+    transition: .4s ease;
+}
+
+#copyright #social-media a i {
+    color: #192440;
+    font-size: 1.2rem;
+    line-height: 40px;
+}
+
+#copyright #social-media a:hover {
+    background: #00FFAD;
+}
+
+#copyright #social-media a:hover i {
+    color: #ffffff;
+}
+
+/********** RWD **********/
+@media (max-width: 575px) {
+    #banner h1 {
+        font-size: 3.6rem;
+    }
+}

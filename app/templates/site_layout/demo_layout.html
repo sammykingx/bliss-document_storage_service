@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% block title %}Layout Page{% endblock %} - BLL Cloud
+    </title>
+
+    <!-- Favicons -->
+    <link href={{ url_for("static", filename="images/favicon.png") }}
+    rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="static/vendors/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    <link
+      href="static/vendors/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    
+    <!-- Page Layout stylesheet -->
+    <link rel="stylesheet" href={{ url_for("static",
+    filename="css/layout/page_layout.css") }} />
+
+    <link rel="stylesheet" href={{ url_for("static",
+    filename="css/components/notification.css") }} />
+
+    <!-- Page specific css -->
+    {% block  css_styles %}
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Include Header -->
+
+      {% include "Includes/header.html" %}
+
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+
+      {% include "Includes/sidebar.html" %}
+
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <div class="pagetitle ms-3">
+              <h1>{% block menu_title %}{% endblock %}</h1>
+          <!-- Disable Breadcrumb for now
+          <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Pages</li>
+                <li class="breadcrumb-item active">Blank</li>
+            </ol>
+          </nav> -->
+        </div>
+      <!-- End Page Title -->
+
+      <!-- Page Body -->
+        {% block page_body %}
+
+        {% endblock %}
+      <!-- End Page Body -->
+      
+      <div id="notification"></div>
+    </main>
+
+    <!-- ======= Footer ======= -->
+
+      {% include "Includes/footer.html" %}
+
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src={{ url_for("static", filename="vendors/bootstrap/js/bootstrap.bundle.min.js") }} defer></script>
+
+    <!-- Template Main JS File -->
+    <script src={{ url_for("static", filename="js/layout/main.js") }} defer></script>
+
+    <!-- header document search 
+     <script src={{ url_for("static", filename="js/layout/header_search.js") }} defer></script>-->
+
+    <!-- Notification JS File -->
+    <script src={{ url_for("static", filename="js/utils/notifications.js") }} defer></script>
+    
+    <!-- Page specific JS file -->
+    {% block specific_js %}
+
+    {% endblock %}
+    <!-- End specific JS file -->
+  </body>
+</html>
