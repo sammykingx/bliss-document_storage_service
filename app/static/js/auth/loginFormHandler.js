@@ -28,7 +28,7 @@ document
       })
       .then(function (data) {
         document.getElementById("spinner").style.display = "none";
-        showNotification(data.message, data.category);
+        showNotification(data.message);
 
         /* if (data.redirect) {
             window.location.href = data.redirect;

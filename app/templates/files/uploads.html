@@ -15,7 +15,7 @@
       <div class="card-body">
         <h5 class="card-title">Enter Client Details</h5>
 
-        <!-- No Labels Form -->
+        <!-- File Upload Form -->
         <form class="needs-validation row g-3" id="uploadDocument" action="#" method="POST" enctype="multipart/form-data" novalidate>
           <div class="col-md-6">
             <input type="text" class="form-control" id="firstName" name="clientFirstName" placeholder="First Name" required>
@@ -51,19 +51,18 @@
           <div class="col-sm-6">
             <label for="inputBranch" class="form-label">Branch</label>
             <select class="form-select needs-validation" id="clientBranch" name="clientBranch" required>
-              <option selected>Choose...</option>
               {% for branch in branches %}
                 <option value="{{ branch }}">{{ branch.capitalize() }}</option>
               {% endfor %}
-              <div class="invalid-feedback">
+            </select>
+            <div class="invalid-feedback">
                 Kindly select a branch.
               </div>
-            </select>
           </div>
           <div class="col-sm-6">
             <label for="inputState" class="form-label">Document Type</label>
             <select class="form-select" id="documentCategory" name="documentCategory" required>
-              <option selected>Choose...</option>
+              <!--<option selected>Choose...</option> -->
               {% for categories in doc_category %}
                 <option value="{{ categories }}">{{ categories.title() }}</option>
               {% endfor %}
@@ -72,13 +71,15 @@
           <div class="invalid-feedback">
             Kindly choose a category.
           </div>
+          <!--
           <div class="col-sm-6">
             <label class="form-label">Document Id</label>
             <input class="form-control" type="text" id="docId">
             <div class="invalid-feedback">
-              Kindly choose a file to proceed.
+              missing document tracker.
             </div>
           </div>
+        -->
           <div class="col-sm-6">
             <label class="form-label">File (<code>.pdf</code> <code>.doc</code> and <code>.docx</code>)</label>
             <input class="form-control" type="file" id="formFile" name="formFile" accept=".pdf,.doc,.docx" required>

@@ -11,6 +11,7 @@ from flask import (
 from flask_login import current_user, login_required
 from app.database.users import Clients
 from app.database.documents import Documents
+from app.database.notifications import Notifications
 from app.database import db_helpers
 from datetime import datetime
 import os, time, uuid
@@ -40,25 +41,31 @@ def fetch_all_docs():
     """Returns all documents in the database"""
 
     if request.method == "POST":
+        # if current_user.role == "admin":
+        #     doc_status = None
+        # else:
+        #     doc_status = [
+        #         Documents.is_deleted == False,
+        #         Documents.is_thrashed == False,
+        #     ]
+            
         search_data = dict(request.form)
-        current_app.logger.info(f"search data: {search_data}")
         results = db_helpers.document_filter_query(
             Documents,
-            search_data["search_input"],
-            search_data["doc_category"],
-            search_data["client_branch"],
+            search_data.get("query", None),
+            search_data.get("doc_category", None),
+            search_data.get("client_branch", None),
         )
         
-        for res in results:
-            current_app.logger.info(f"serch result file name: {res.file_name}")
+        if current_user.role != "admin":
+            results = [file for file in results if file.is_thrashed == False and file.is_deleted == False]
         
         return render_template(
-            "documents.html",
+            "files/documents.html",
             branches = ALL_BRANCHES,
             doc_category = DOCUMENTS_CATEGORY,
             all_documents = results,
             user = current_user,
-           # _indicator = "rendering from post"
         )
     
     # for get request
@@ -159,6 +166,14 @@ def upload_doc():
         }
         
         file_id = db_helpers.save_record(Documents, **document_object)
+        db_helpers.save_record(
+            Notifications,
+            message=f"Document uploaded by {current_user.name}",
+            category="success",
+            user_id=current_user.email,
+            created_at=datetime.utcnow(),
+        )
+        
         registerd = db_helpers.fetch_record(Clients, record_id=client_data["clientEmail"])
         if not registerd:
             client_object = {
@@ -215,6 +230,14 @@ def thrash_document(file_id):
         thrashed_time=datetime.utcnow(),
         thrashed_by=current_user.name,
     )
+    
+    db_helpers.save_record(
+        Notifications,
+        message=f"{current_user.name} thrashed a document",
+        category="warning",
+        user_id=current_user.email,
+        created_at=datetime.utcnow(),
+    )
 
     return redirect(url_for("documents.fetch_all_docs"))
 
@@ -234,7 +257,13 @@ def restore_thrashed_document(file_id):
         restored_by=current_user.name,
     )
 
-    current_app.logger.info(f"document id: {file_id} was restored")
+    db_helpers.save_record(
+        Notifications,
+        message=f"{current_user.name} restored a document",
+        category="info",
+        user_id=current_user.email,
+        created_at=datetime.utcnow(),
+    )
 
     return redirect(url_for("documents.fetch_thrashed_docs"))
 
@@ -252,6 +281,22 @@ def delete_document(file_id):
         deleted_by=current_user.name,
     )
 
+    db_helpers.save_record(
+        Notifications,
+        message=f"{current_user.name} deleted a document",
+        category="danger",
+        user_id=current_user.email,
+        created_at=datetime.utcnow(),
+    )
+    
+    db_helpers.save_record(
+        Notifications,
+        message=f"{current_user.name} deleted a document",
+        category="danger",
+        user_id=current_user.email,
+        created_at=datetime.utcnow(),
+    )
+    
     return jsonify(
         message="Document deleted successfully",
         category="success",

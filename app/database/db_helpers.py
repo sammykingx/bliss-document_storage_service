@@ -42,7 +42,7 @@ def save_record(table: Table, **data) -> Row:
     return record
 
 
-def document_filter_query(table: Table, search_input: str, doc_category:str, client_branch: str) -> list[Row]:
+def document_filter_query(table: Table, search_input: str, doc_category:str, client_branch: str,) -> list[Row]:
     query = table.query
     conditions = []
 
@@ -50,8 +50,10 @@ def document_filter_query(table: Table, search_input: str, doc_category:str, cli
         conditions.append(table.client_id.ilike(f'%{search_input}%'))
         conditions.append(table.file_id.ilike(f'%{search_input}%'))
         conditions.append(table.doc_id.ilike(f'%{search_input}%'))
+        
     if doc_category:
         conditions.append(table.doc_category.ilike(f'%{doc_category}%'))
+        
     if client_branch:
         conditions.append(table.client_branch.ilike(f'%{client_branch}%'))
 
@@ -62,10 +64,13 @@ def document_filter_query(table: Table, search_input: str, doc_category:str, cli
     return results
 
 
-def fetch_recent_files(table: Table, limit: int=7) -> list[Row]:
-    record = table.query.order_by(table.upload_time.desc()).limit(7).all()
+def fetch_recent_files(table: Table, limit: int=7, **kwargs) -> list[Row]:
+    record = table.query.filter_by(**kwargs).order_by(table.upload_time.desc()).limit(limit).all()
     return record
 
+def fetch_recent_activity(table: Table, limit: int=7) -> list[Row]:
+    record = table.query.order_by(table.created_at.desc()).limit(limit).all()
+    return record
 
 def update_record(table: Table, record_id: str, **data) -> Row:
     record = table.query.get(record_id)

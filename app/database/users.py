@@ -23,7 +23,7 @@ class Users(db.Model, UserMixin):
 
 
     def __repr__(self) -> str:
-        return f"(name={self.name}, email={self.email}, " \
+        return f"Users(name={self.name}, email={self.email}, " \
                f"password={self.password})"
 
 
@@ -46,7 +46,7 @@ class Clients(db.Model):
     documents = db.relationship("Documents", back_populates="client", lazy=True)
     
     def __repr__(self) -> str:
-        return f"(name: {self.first_name} {self.last_name}, " \
+        return f"Clients(name: {self.first_name} {self.last_name}, " \
                 f"email: {self.email}, phone_number: {self.phone_number}, " \
                 f"branch: {self.branch})"
     

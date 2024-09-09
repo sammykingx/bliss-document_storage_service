@@ -2,10 +2,12 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
                 <img
-                    src={{ url_for("static", filename="images/layout/cloud-data.png") }}
+                    src={{ url_for("static", filename="images/logo.png") }}
+                    width="200px"
+                    height="500px"
                     alt="dashboard logo"
                 />
-                <span class="d-none d-lg-block">BLL Cloud</span>
+                <!--<span class="d-none d-lg-block">BLL Cloud</span>-->
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
@@ -15,16 +17,18 @@
             <form
                 class="search-form d-flex align-items-center"
                 method="POST"
-                action="#"
+                action="{{ url_for('documents.fetch_all_docs') }}"
+                id="search-form"
             >
                 <input
                     type="text"
                     name="query"
-                    placeholder="Search"
-                    title="Enter search keyword"
-                    disabled
+                    placeholder="Search for documents"
+                    title="Enter document keyword"
+                    id="search-input"
+                    required
                 />
-                <button type="submit" title="Search" disabled>
+                <button type="submit" title="Search">
                     <i class="bi bi-search"></i>
                 </button>
             </form>

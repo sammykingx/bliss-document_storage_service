@@ -42,7 +42,7 @@ document.getElementById("uploadDocument").addEventListener("submit", event => {
         showNotification("File Upload Successful", "info");
         setTimeout(() => {
           window.location.reload();
-        }, 800);
+        }, 700);
     })
     .catch(err => {
         showNotification(err, "error");

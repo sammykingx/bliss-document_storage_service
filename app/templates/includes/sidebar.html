@@ -71,16 +71,18 @@
             </a>
         </li>
 
+        {% if user.role == "admin" %}
         <!-- Thrashed Documents -->
-         <li class="nav-item">
-            <a
-                class="nav-link collapsed"
-                href="{{ url_for('documents.fetch_thrashed_docs') }}" 
-            >
-                <i class="bi bi-trash"></i><span>Thrashed Documents</span>
-                <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
-            </a>
-        </li>
+          <li class="nav-item">
+              <a
+                  class="nav-link collapsed"
+                  href="{{ url_for('documents.fetch_thrashed_docs') }}" 
+              >
+                  <i class="bi bi-trash"></i><span>Thrashed Documents</span>
+                  <!-- <i class="bi bi-chevron-down ms-auto"></i> --> <!--Down arrow to indicate submenu-->
+              </a>
+          </li>
+        {% endif %}
 
         <!-- Message Tickets
         <li class="nav-item">
@@ -199,7 +201,7 @@
         <!-- End Charts Nav -->
     </ul>
     <div class="storage-board">
-      <h5> Storage Meter</h5>
+      <h4> Storage Meter</h4>
  <div class="storage-bar">
      <div class="used-storage" id="usedStorage"></div>
  </div>

@@ -10,30 +10,93 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href={{ url_for("static", filename="vendors/bootstrap/css/bootstrap.min.css") }}
+      rel="stylesheet">
+
+      <link rel="stylesheet" href="{{ url_for("static", filename="vendors/font-awesome-4.7.0/css/font-awesome.min.css") }}">
+      <!-- AOS -->
+      <link rel="stylesheet" href="{{ url_for("static", filename="vendors/aos/aos.css") }}">
+
+    <!-- Page stylesheet -->
     <link rel="stylesheet" href={{ url_for("static", filename="css/index.css")
     }}>
+
+    <!-- Page stylesheet -->
+    <link rel="stylesheet" href={{ url_for("static", filename="css/new_index.css") }}>
+
+    <!-- Favicons -->
+    <link href={{ url_for("static", filename="images/favicon.png") }}
+    rel="icon">
   </head>
   <body>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <div class="content"></div>
 
-    <div class="img">
-      <img src="static/images/logo.png" width="250px" />
+    <!-- Particles -->
+    <div id="particles-js"></div>
+
+    <!-- banner -->
+    <div class="d-flex align-items-center justify-content-center jumbotron jumbotron-fluid" id="banner" style="background-image: url(static/images/banner-bk.jpg); height: 100vh;">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <!--
+                    <div class="col-2">
+                        <img src="{{ url_for("static", filename="images/logo.png") }}" alt="logo">
+                    </div> -->
+                    <!--
+                    <div class="col-6 align-self-center text-right">
+                        <a href="#" class="text-white lead">Get Early Access</a>
+                    </div> -->
+                </div>
+            </header>
+            <h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="display-3 text-white fw-bold my-3">
+            	A New Way<br>
+            	To Manage Files
+            </h1>
+            <p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white my-4 p-3">
+                Discover an innovative approach to file management using the latest cloud technology.
+            </p>
+            <a href="{{ login_url }}" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="btn btn-success btn-lg rounded">Get Started</a>
+        </div>
     </div>
 
-    <main>
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Welcome to Cloud Document Management System</h1>
-          <p>Manage your documents efficiently in the cloud.</p>
-          <div class="cta-buttons">
-            <a href="#"><button>Sign Up</button></a>
-            <a href="{{ login_url }}"><button>Login</button></a>
-          </div>
+    <!--
+    <div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2018 Chen, Yi-Ya.
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-      </section>
-    </main>
+    </div> -->
+    
+    <script src={{ url_for("static", filename="vendors/bootstrap/js/bootstrap.bundle.js") }}></script>
+    <!--<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src={{ url_for("static", filename="js/particles.js") }}></script> -->
+    <!-- AOS -->
+    <script src="{{ url_for("static", filename="vendors/aos/aos.js") }}"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+    
+    
   </body>
 </html>
