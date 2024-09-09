@@ -50,7 +50,6 @@ def fetch_all_docs():
         #     ]
             
         search_data = dict(request.form)
-        current_app.logger.info(f"search data: {search_data}")
         results = db_helpers.document_filter_query(
             Documents,
             search_data.get("query", None),
@@ -60,9 +59,6 @@ def fetch_all_docs():
         
         if current_user.role != "admin":
             results = [file for file in results if file.is_thrashed == False and file.is_deleted == False]
-            
-        for res in results:
-            current_app.logger.info(f"serch result file name: {res.file_name}")
         
         return render_template(
             "files/documents.html",
@@ -70,7 +66,6 @@ def fetch_all_docs():
             doc_category = DOCUMENTS_CATEGORY,
             all_documents = results,
             user = current_user,
-           # _indicator = "rendering from post"
         )
     
     # for get request
